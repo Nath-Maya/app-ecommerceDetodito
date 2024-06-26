@@ -3,7 +3,6 @@ import { Image, StyleSheet } from 'react-native';
 import Home from '../screens/Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ROUTE } from './Routes';
-import Welcome from '../screens/Welcome';
 
 const Tab = createBottomTabNavigator();
 
