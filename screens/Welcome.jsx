@@ -1,6 +1,7 @@
 import { StyleSheet, Text, SafeAreaView, TouchableOpacity, Image} from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { theme } from '../config/theme';
 
 export default function Welcome() {
 
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
         padding: 16,
         marginTop: 20,
         border: '2px',
-        backgroundColor: "blue"
+        backgroundColor: theme.colors.sky['500']
     },
     buttonText: {
         color: 'white',
