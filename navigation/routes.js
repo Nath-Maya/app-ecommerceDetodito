@@ -3,5 +3,8 @@ export const ROUTE = {
     HOME: 'Home',
     CART: 'Cart',
     PRODUCTS: 'Products',
-    CATEGORIES: 'ItemListCategory'
+    CATEGORIES: 'ItemListCategory',
+    ORDERS: 'Orders',
+    MY_PROFILE: 'MyProfile',
+    TAB_NAVIGATOR: 'TabNavigator'
 }

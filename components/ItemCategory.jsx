@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
       },
       name: {
-        color: colors.titleClear,
         fontSize: 14,
         fontWeight: 'bold',
         textAlign: 'center',

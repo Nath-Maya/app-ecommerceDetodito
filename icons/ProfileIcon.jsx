@@ -1,5 +1,5 @@
 import React from "react"
-import { Svg } from "react-native-svg"
+import { Svg, Path, G, Defs, ClipPath } from "react-native-svg"
 
 
 export const ProfileIcon = ({size=30}) => (

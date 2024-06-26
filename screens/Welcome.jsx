@@ -2,18 +2,19 @@ import { StyleSheet, Text, SafeAreaView, TouchableOpacity, Image} from 'react-na
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { theme } from '../config/theme';
+import { ROUTE } from '../navigation/Routes';
 
 export default function Welcome() {
 
     const navigation = useNavigation();
 
     const handlePress = () => {
-        navigation.navigate('Home'); 
+        navigation.navigate(ROUTE.TAB_NAVIGATOR); 
       };
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-        <Image source={require("../assets/icons/logo/logo-de-todito.png")} style={styles.image} />
+        <Image source={require("../icons/logo/logo-de-todito.png")} style={styles.image} />
           <TouchableOpacity style={styles.button} onPress={handlePress}>
             <Text style={styles.buttonText}>Ingresar</Text>
           </TouchableOpacity>
