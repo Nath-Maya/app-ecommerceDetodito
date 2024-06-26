@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function Category({name}) {
+export default function ItemCategory({name}) {
   return (
     <View style={styles.category}>
         <Text style={styles.name}>{name}</Text>

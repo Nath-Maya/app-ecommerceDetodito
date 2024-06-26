@@ -1,9 +1,8 @@
 import Svg, { Path } from 'react-native-svg'
 import React from 'react'
 
-export default function ShopIcon({size= 30}) {
-  return (
-    <Svg
+export const ShopIcon = ({size = 30}) => (
+  <Svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
@@ -23,5 +22,4 @@ export default function ShopIcon({size= 30}) {
       d="M16.5 11 15 19M7.5 11 9 19M12 11v8"
     />
   </Svg>
-  )
-}
+)
