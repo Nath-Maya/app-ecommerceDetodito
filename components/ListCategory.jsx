@@ -17,6 +17,6 @@ export default function ListCategory() {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 5,
+      padding: 5,
     }
 })
