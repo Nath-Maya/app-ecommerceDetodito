@@ -1,6 +1,7 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import React from 'react'
 import ItemCategory from './ItemCategory'
+import category from '../data/category.json'
 
 export default function ListCategory() {
   return (
@@ -18,5 +19,6 @@ export default function ListCategory() {
 const styles = StyleSheet.create({
     container: {
       padding: 5,
+      height: 10
     }
 })

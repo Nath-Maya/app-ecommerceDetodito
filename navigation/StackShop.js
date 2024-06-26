@@ -13,9 +13,9 @@ export default function StackShop() {
         <Stack.Screen
             name={ROUTE.HOME}
             component={Home}
-        />
+        /> 
         <Stack.Screen
-            name={ROUTE.CATEGORIES}
+            name="Categorías"
             component={ItemListCategory}
         />
     </Stack.Navigator>
