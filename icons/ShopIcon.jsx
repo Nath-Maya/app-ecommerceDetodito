@@ -1,15 +1,14 @@
 import Svg, { Path } from 'react-native-svg'
 import React from 'react'
 
-export default function ShopIcon() {
+export default function ShopIcon({size= 30}) {
   return (
     <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={800}
-    height={800}
+    width={size}
+    height={size}
     fill="none"
     viewBox="0 0 24 24"
-    {...props}
   >
     <Path fill="#fff" d="M0 0h24v24H0z" />
     <Path

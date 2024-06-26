@@ -1,8 +1,10 @@
 import React from 'react'
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import Home from '../screens/Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ROUTE } from './Routes';
+import ShopIcon from '../icons/ShopIcon';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -14,12 +16,9 @@ export default function TabNavigator() {
       component={Home}
       options={{
         tabBarIcon: () => (
-          <Image
-            source={require('../assets/icons/tab-navigation/hogar.png')}
-            style={styles.iconTab}
-          />
+          <ShopIcon/>
         ),
-        title: 'Inicio',
+        title: 'Tienda',
       }}
       />
     </Tab.Navigator>
@@ -27,8 +26,5 @@ export default function TabNavigator() {
 }
 
 const styles = StyleSheet.create({
-  iconTab: {
-    width: 25,
-    height: 25
-  }
+
 })

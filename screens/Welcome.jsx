@@ -7,7 +7,7 @@ export default function Welcome() {
     const navigation = useNavigation();
 
     const handlePress = () => {
-        navigation.navigate(''); 
+        navigation.navigate('Home'); 
       };
 
   return (
@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         padding: 16,
         marginTop: 20,
-        border: '2px'
-
+        border: '2px',
+        backgroundColor: "blue"
     },
     buttonText: {
         color: 'white',
