@@ -1,4 +1,4 @@
-import { SafeAreaView, FlatList, StyleSheet, Text, Button } from 'react-native'
+import { SafeAreaView, FlatList, StyleSheet } from 'react-native'
 import { useState, useEffect, useMemo } from 'react'
 import React from 'react'
 import ProductItem from '../components/ProductItem'

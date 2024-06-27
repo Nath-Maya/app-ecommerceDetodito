@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { ROUTE } from './Routes';
@@ -10,10 +9,18 @@ const Stack = createStackNavigator();
 
 export default function StackShop() {
   return (
-    <Stack.Navigator initialRouteName='Welcome'>
+    <Stack.Navigator initialRouteName='Welcome'
+      screenOptions={{
+        headerShadowVisible: false,
+      }}
+    >
         <Stack.Screen
             name={ROUTE.HOME}
             component={Home}
+            options={{
+              headerTitle: 'Tienda',
+              headerBackVisible: false,
+            }}
         /> 
         <Stack.Screen
             name="Categorías"

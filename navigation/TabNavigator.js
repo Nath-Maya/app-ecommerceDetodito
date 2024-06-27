@@ -16,7 +16,13 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: 'red',
+        tabBarInactiveTintColor: 'green'
+      }}
+    >
       <Tab.Screen
         name='Tienda'
         component={StackShop}
