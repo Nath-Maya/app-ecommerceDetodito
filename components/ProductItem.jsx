@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
 
 export default function ProductItem({title, price, image}) {
   return (
-    <View style={styles.card}>
+    <Pressable style={styles.card}>
       <View style={styles.descriptionContainer}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.price}>${price.toFixed(2)}</Text>
@@ -11,7 +11,7 @@ export default function ProductItem({title, price, image}) {
       <View style={styles.imageContainer}>
         <Image style={ styles.image} source={{ uri: image }} />
       </View>
-    </View>
+    </Pressable>
   ) 
 }
 
