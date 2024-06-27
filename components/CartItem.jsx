@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
+import DeleteItemCart from './DeleteItemCart'
 
 export default function CartItem( { image, title, category, price } ) {
   return (
@@ -9,6 +10,7 @@ export default function CartItem( { image, title, category, price } ) {
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{category}</Text>
         <Text style={styles.price}>${price}</Text>
+        <DeleteItemCart/>
       </View>
     </View>
   )
