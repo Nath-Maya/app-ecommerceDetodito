@@ -10,8 +10,8 @@ export default function ProductItem({title, price, image, onPress, rating}) {
     <Pressable style={[styles.card, smallDevice && styles.cardSmall]} onPress={onPress}>
       <View style={styles.descriptionContainer}>
         <Text style={[styles.title, smallDevice && styles.titleSmall]}>{title}</Text>
-        <Text style={[styles.price, smallDevice && styles.priceSmall]}>${price.toFixed(2)}</Text>
         <ProductRating rating={rating} />
+        <Text style={[styles.price, smallDevice && styles.priceSmall]}>${price.toFixed(2)}</Text>
       </View>
       <View style={styles.imageContainer}>
         <Image style={[styles.image, smallDevice && styles.imageSmall]} source={{ uri: image }} />
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 3,
   },
   titleSmall: {
     fontSize: 14,
@@ -63,5 +63,5 @@ const styles = StyleSheet.create({
   imageSmall: {
     width: 80,
     height: 80,
-  }
+  },
 });

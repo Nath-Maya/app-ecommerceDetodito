@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     ratingContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 8,
+        marginBottom: 8
       },
       star: {
         marginHorizontal: 2,

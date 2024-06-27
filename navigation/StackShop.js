@@ -14,14 +14,14 @@ export default function StackShop() {
         headerShadowVisible: false,
       }}
     >
-        <Stack.Screen
+        {/* <Stack.Screen
             name={ROUTE.HOME}
             component={Home}
             options={{
               headerTitle: 'Tienda',
               headerBackVisible: false,
             }}
-        /> 
+        />  */}
         <Stack.Screen
             name="Categorías"
             component={ItemListCategory}
