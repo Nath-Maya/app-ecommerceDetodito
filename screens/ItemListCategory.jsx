@@ -1,7 +1,7 @@
 import {  SafeAreaView, FlatList } from 'react-native'
 import { useState, useEffect } from 'react'
 import React from 'react'
-import Card from '../components/Card'
+import ProductItem from '../components/ProductItem'
 import products from '../data/products.json'
 import SearchInput from '../components/SearchInput'
 
@@ -31,7 +31,7 @@ export default function ItemListCategory() {
         <FlatList
             data={ productsFiltered }
             key = {item => item.id}
-            renderItem={({item}) => <Card {...item}/>}/>
+            renderItem={({item}) => <ProductItem {...item}/>}/>
     </SafeAreaView>
   )
 }
