@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function Card({title, price}) {
+export default function Card({title, price, image}) {
   return (
     <View style={styles.card}>
       <Text style={styles.title}>{title}</Text>
