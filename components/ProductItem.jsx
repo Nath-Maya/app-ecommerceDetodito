@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, Image, Pressable, useWindowDimensions } from 'react-native'
 import React from 'react'
+import ProductRating from './ProductRating';
 
-export default function ProductItem({title, price, image, onPress}) {
+export default function ProductItem({title, price, image, onPress, rating}) {
   const { width } = useWindowDimensions();
   const smallDevice = width < 350;
 
@@ -10,6 +11,7 @@ export default function ProductItem({title, price, image, onPress}) {
       <View style={styles.descriptionContainer}>
         <Text style={[styles.title, smallDevice && styles.titleSmall]}>{title}</Text>
         <Text style={[styles.price, smallDevice && styles.priceSmall]}>${price.toFixed(2)}</Text>
+        <ProductRating rating={rating} />
       </View>
       <View style={styles.imageContainer}>
         <Image style={[styles.image, smallDevice && styles.imageSmall]} source={{ uri: image }} />
