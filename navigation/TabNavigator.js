@@ -18,18 +18,19 @@ export default function TabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
         tabBarActiveTintColor: 'red',
         tabBarInactiveTintColor: 'green'
       }}
     >
-      <Tab.Screen
+      {/* <Tab.Screen
         name='Tienda'
         component={StackShop}
         options={{
           tabBarIcon: () => (<ShopIcon/>),
+          headerShown: false,
         }}
-      />
+      /> */}
       <Tab.Screen
         name={ROUTE.CART}     
         component={Cart}
