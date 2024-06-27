@@ -7,14 +7,16 @@ import SearchInput from '../components/SearchInput'
 
 export default function ItemListCategory() {
 
+  //Estado inicial para el texto que ingresa el usuario
   const [textToSearch, setTextToSearch] = useState('')
+  //Estado lista de productos filtrado
   const [productsFiltered, setProductsFiltered] = useState(products)
 
-  //Cuando el usuario escriba filtre los resultados
+  //Filtrar los productos con el texto ingresado del usuario teniendo en cuenta sus categorias
   useEffect( () => {
     const filtered = products.filter(
       product => 
-        product.category.toLowerCase().startsWith(textToSearch.toLowerCase())
+        product.category.toLowerCase().includes(textToSearch.toLowerCase())
     )
     setProductsFiltered(filtered)
   }, [textToSearch]
