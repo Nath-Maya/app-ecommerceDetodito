@@ -11,13 +11,16 @@ const Stack = createStackNavigator();
 export default function StackShop() {
   return (
     <Stack.Navigator initialRouteName='Welcome'>
-        {/* <Stack.Screen
+        <Stack.Screen
             name={ROUTE.HOME}
             component={Home}
-        />  */}
+        /> 
         <Stack.Screen
             name="Categorías"
             component={ItemListCategory}
+            options={{
+              headerShown: true,
+            }}
         />
         <Stack.Screen
             name="Detalle"
