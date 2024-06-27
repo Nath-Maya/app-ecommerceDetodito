@@ -1,16 +1,19 @@
-import {  SafeAreaView, FlatList, Modal, View, StyleSheet, Text, Button } from 'react-native'
+import { SafeAreaView, FlatList, Modal, View, StyleSheet, Text, Button } from 'react-native'
 import { useState, useEffect } from 'react'
 import React from 'react'
 import ProductItem from '../components/ProductItem'
 import products from '../data/products.json'
 import SearchInput from '../components/SearchInput'
+import { useNavigation } from '@react-navigation/native'
 
 export default function ItemListCategory() {
-
 
   const [textToSearch, setTextToSearch] = useState('')    //Estado inicial para el texto que ingresa el usuario
   const [productsFiltered, setProductsFiltered] = useState(products)   //Estado lista de productos filtrado
   const [modalVisible, setModalVisible] = useState(false)   //Estado de visibilidad de modal con mensaje de producto encontrado o no encontrado
+
+  const navigation = useNavigation() 
+
 
   //Filtrar los productos con el texto ingresado del usuario teniendo en cuenta sus categorias
   useEffect( () => {
@@ -29,7 +32,11 @@ export default function ItemListCategory() {
  
   }, [textToSearch])
 
-  
+  //Funcion navegacion a la pantalla de detalles
+  const handlePressProduct = (item) => {
+    navigation.navigate('Detalle', { product: item});
+  }
+
   return (
     <SafeAreaView>
         <SearchInput 
@@ -37,9 +44,14 @@ export default function ItemListCategory() {
         value={textToSearch}
         />
         <FlatList
-            data={ productsFiltered }
-            key = {item => item.id}
-            renderItem={({item}) => <ProductItem {...item}/>}
+            data={productsFiltered}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <ProductItem
+                {...item}
+                onPress={() => handlePressProduct(item)} 
+              />
+            )}
         />
         <Modal
           animationType="slide"

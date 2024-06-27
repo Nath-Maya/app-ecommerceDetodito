@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet, Image, Pressable, useWindowDimensions } from 'react-native'
 import React from 'react'
 
-export default function ProductItem({title, price, image}) {
+export default function ProductItem({title, price, image, onPress}) {
   const { width } = useWindowDimensions();
   const smallDevice = width < 350;
 
   return (
-    <Pressable style={[styles.card, smallDevice && styles.cardSmall]}>
+    <Pressable style={[styles.card, smallDevice && styles.cardSmall]} onPress={onPress}>
       <View style={styles.descriptionContainer}>
         <Text style={[styles.title, smallDevice && styles.titleSmall]}>{title}</Text>
         <Text style={[styles.price, smallDevice && styles.priceSmall]}>${price.toFixed(2)}</Text>

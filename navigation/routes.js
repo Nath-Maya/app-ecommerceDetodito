@@ -6,5 +6,6 @@ export const ROUTE = {
     CATEGORIES: 'ItemListCategory',
     ORDERS: 'Orders',
     MY_PROFILE: 'MyProfile',
-    TAB_NAVIGATOR: 'TabNavigator'
+    TAB_NAVIGATOR: 'TabNavigator',
+    ITEM_DETAIL: 'ItemDetail'
 }

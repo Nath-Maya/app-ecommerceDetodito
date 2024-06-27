@@ -1,10 +1,45 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
-export default function ItemDetail() {
+export default function ItemDetail( { route }) {
+
+  //Obtener los parametros del producto
+  const { product } = route.params;
+  console.log('\x1b[32m%s\x1b[0m', 'Detalles de producto: ' + product.title);
+
   return (
-    <View>
-      <Text>ItemDetail</Text>
+    <View style={styles.container}>
+      <Image style={styles.image} source={{ uri: product.image }} />
+      <Text style={styles.title}>{product.title}</Text>
+      <Text style={styles.price}>${product.price.toFixed(2)}</Text>
+      <Text style={styles.description}>{product.description}</Text>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    alignItems: 'center',
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  price: {
+    fontSize: 20,
+    color: '#888',
+    marginBottom: 16,
+  },
+  description: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+});
