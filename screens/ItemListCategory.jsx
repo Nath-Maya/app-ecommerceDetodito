@@ -51,7 +51,7 @@ export default function ItemListCategory() {
         >
           <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Producto no encontrado</Text>
+            <Text style={styles.modalText}>Producto "{textToSearch}" no encontrado </Text>
             <Button
               title="Cerrar"
               onPress={() => setModalVisible(!modalVisible)}
