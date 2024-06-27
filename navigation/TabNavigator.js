@@ -23,14 +23,14 @@ export default function TabNavigator() {
         tabBarInactiveTintColor: 'green'
       }}
     >
-      {/* <Tab.Screen
+      <Tab.Screen
         name='Tienda'
         component={StackShop}
         options={{
           tabBarIcon: () => (<ShopIcon/>),
           headerShown: false,
         }}
-      /> */}
+      />
       <Tab.Screen
         name={ROUTE.CART}     
         component={Cart}

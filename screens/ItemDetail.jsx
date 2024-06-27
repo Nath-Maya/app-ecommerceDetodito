@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
+import QuantitySelector from '../components/QuantitySelector';
 
 export default function ItemDetail( { route }) {
 
@@ -11,8 +12,11 @@ export default function ItemDetail( { route }) {
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: product.image }} />
       <Text style={styles.title}>{product.title}</Text>
-      <Text style={styles.price}>${product.price.toFixed(2)}</Text>
       <Text style={styles.description}>{product.description}</Text>
+      <Text style={styles.price}>${product.price.toFixed(2)}</Text>
+      <View>
+        <QuantitySelector/>
+      </View>
     </View>
   )
 }
@@ -34,9 +38,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   price: {
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight: "Bold",
     color: '#888',
-    marginBottom: 16,
+    marginTop: 15,
   },
   description: {
     fontSize: 16,
