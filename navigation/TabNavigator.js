@@ -10,6 +10,8 @@ import Cart from '../screens/Cart'
 import Orders from '../screens/Orders'
 import MyProfile from '../screens/MyProfile'
 import StackShop from './StackShop';
+import StackCart from './StackCart';
+import StackOrders from './StackOrders';
 
 
 const Tab = createBottomTabNavigator();
@@ -32,19 +34,21 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name={ROUTE.CART}     
-        component={Cart}
+        name='Carrito'    
+        component={StackCart}
         options={{
           tabBarIcon: () => (<CartIcon/>),
+          headerShown: false,
           title: 'Carrito',
         }}
       />
       <Tab.Screen
-        name={ROUTE.ORDERS}     
-        component={Orders}
+        name='Ordenes' 
+        component={StackOrders}
         options={{
           tabBarIcon: () => (<OrderIcon/>),
           title: 'Ordenes',
+          headerShown: false,
         }}
       />
       <Tab.Screen
