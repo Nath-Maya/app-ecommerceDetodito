@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
+import AddButton from '../components/AddButton';
 
 
 export default function ItemDetail( { route }) {
@@ -14,6 +15,9 @@ export default function ItemDetail( { route }) {
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
       <Text style={styles.price}>${product.price.toFixed(2)}</Text>
+      <View>
+        <AddButton/>
+      </View>
     </View>
   )
 }
