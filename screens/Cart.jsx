@@ -1,27 +1,27 @@
-import React from 'react'
-import { FlatList } from 'react-native-gesture-handler'
-import { StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { CartProvider, useCart } from '../context/CartContex'
-import TotalCart from '../components/TotalCart'
-import CartItem from '../components/CartItem'
+import React from 'react';
+import { FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useCart } from '../context/CartContex';
+import TotalCart from '../components/TotalCart';
+import CartItem from '../components/CartItem';
 
 export default function Cart() {
-
-  const { cartItems } = useCart();
+  const { cartItems, removeItemFromCart } = useCart();
 
   return (
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={cartItems}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <CartItem {...item} />}
-          contentContainerStyle={styles.list}
-        />
-        <TotalCart />
-      </SafeAreaView>
-
-  )
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={cartItems}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <CartItem {...item} handleDelete={removeItemFromCart} />
+        )}
+        ListEmptyComponent={<Text>No hay productos en el carrito</Text>}
+        contentContainerStyle={styles.list}
+      />
+      <TotalCart />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
