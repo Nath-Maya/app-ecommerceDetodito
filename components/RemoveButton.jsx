@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-export default function DeleteItemCart({ id, handleDelete }) {
+export default function RemoveButton({ id, handleDelete }) {
   return (
     <View style={styles.container}>
       <Pressable style={styles.button} onPress={() => handleDelete(id)}>
