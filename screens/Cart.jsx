@@ -7,8 +7,8 @@ import CartItem from '../components/CartItem';
 
 
 export default function Cart() {
-  const cartItems = useSelector((state) => state.cart.items);
 
+  const cartItems = useSelector((state) => state.cart.items);
 
   return (
     <SafeAreaView style={styles.container}>

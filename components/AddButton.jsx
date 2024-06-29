@@ -4,14 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/cart/cartSlice';
 
 
-
-export default function AddButton({ id }) {
+export default function AddButton({ product }) {
   const dispatch = useDispatch();
 
-  const item = useSelector((state) => state.cart.items.find(item => item.id === id));
-
+  //Manejo del evento para agregar producto al carrito con boton
   const handleAddToCart = () => {
-    dispatch(addToCart({ id }));
+    dispatch(addToCart(product));
     console.log("\x1b[34m%s\x1b[0m", "Producto agregado")
   };
 

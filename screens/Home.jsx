@@ -22,7 +22,7 @@ export default function Home () {
         <Text style={styles.subtitle}>¡Aquí encontrarás de todo!</Text>
         <TouchableOpacity style={styles.button} onPress={handlePress}>
             <Text style={styles.buttonText}>Explorar</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   )

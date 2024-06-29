@@ -6,7 +6,7 @@ import SearchInput from '../components/SearchInput';
 import { useNavigation } from '@react-navigation/native';
 import NotFoundModal from '../components/NotFoundModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCategorySelected } from '../redux/shop/shopSlice';
+
 
 // Filtrar productos tanto por selección de categoría en lista o por busqueda de texto
 const filterProducts = (products, textToSearch, selectedCategory) => {
