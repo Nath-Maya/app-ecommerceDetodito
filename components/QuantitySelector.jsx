@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { incrementQuantity, decrementQuantity } from '../redux/cart/cartSlice'
 
 export default function QuantitySelector({ id }) {
+
   const dispatch = useDispatch();
   const item = useSelector((state) => state.cart.items.find(item => item.id === id));
 
