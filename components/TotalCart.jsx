@@ -3,6 +3,7 @@ import React from 'react'
 import { getTotalItems, getTotalPrice } from '../redux/cart/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import ConfirmOrderButton from './ConfirmOrderButton';
 
 export default function TotalCart() {
 
@@ -24,6 +25,7 @@ export default function TotalCart() {
     <View style={styles.container}>
       <Text style={styles.text}>Total Items: {totalItems}</Text>
       <Text style={styles.text}>Total Price: ${totalPrice}</Text>
+      <ConfirmOrderButton/>
     </View>
   )
 }
