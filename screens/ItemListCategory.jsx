@@ -2,12 +2,12 @@ import { SafeAreaView, FlatList, StyleSheet } from 'react-native'
 import { useState, useEffect, useMemo } from 'react'
 import React from 'react'
 import ProductItem from '../components/ProductItem'
-import products from '../data/products.json'
 import SearchInput from '../components/SearchInput'
 import { useNavigation } from '@react-navigation/native'
 import NotFoundModal from '../components/NotFoundModal'
+import { useSelector } from 'react-redux'
 
-//Logica de filtro de productos
+// Filtrar los productos
 const filterProducts = (products, textToSearch) => {
   if (!textToSearch) return products;
   return products.filter(product =>
@@ -16,13 +16,17 @@ const filterProducts = (products, textToSearch) => {
 };
 
 export default function ItemListCategory() {
+  const [textToSearch, setTextToSearch] = useState(''); // Estado inicial para el texto que ingresa el usuario
+  const [modalVisible, setModalVisible] = useState(false); // Estado de visibilidad de modal con mensaje de producto encontrado o no encontrado
+  const navigation = useNavigation();
+  
 
-  const [textToSearch, setTextToSearch] = useState('')    //Estado inicial para el texto que ingresa el usuario
-  const productsFiltered = useMemo(() => filterProducts(products, textToSearch), [textToSearch]);   //Estado lista de productos filtrado
-  const [modalVisible, setModalVisible] = useState(false)   //Estado de visibilidad de modal con mensaje de producto encontrado o no encontrado
-  const navigation = useNavigation() 
+  const products = useSelector(state => state.shop.products);
 
+  // Filtrar productos basado en el texto de búsqueda
+  const productsFiltered = useMemo(() => filterProducts(products, textToSearch), [products, textToSearch]);
 
+  // Efecto para mostrar modal si no se encuentran productos
   useEffect(() => {
     if (textToSearch !== '' && productsFiltered.length === 0) {
       setModalVisible(true);
@@ -36,26 +40,26 @@ export default function ItemListCategory() {
   };
 
   return (
-    <SafeAreaView>
-        <SearchInput 
+    <SafeAreaView style={styles.container}>
+      <SearchInput
         onChangeText={setTextToSearch}
         value={textToSearch}
-        />
-        <FlatList
-            data={productsFiltered}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <ProductItem
-                {...item}
-                onPress={() => handlePressProduct(item)} 
-              />
-            )}
-        />
-        <NotFoundModal
-          visible={modalVisible}
-          textToSearch={textToSearch}
-          onClose={() => setModalVisible(false)}
-        />
+      />
+      <FlatList
+        data={productsFiltered}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <ProductItem
+            {...item}
+            onPress={() => handlePressProduct(item)} 
+          />
+        )}
+      />
+      <NotFoundModal
+        visible={modalVisible}
+        textToSearch={textToSearch}
+        onClose={() => setModalVisible(false)}
+      />
     </SafeAreaView>
   )
 }

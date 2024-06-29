@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 export default function Categories() {
 
-  const categories = useSelector(state => state.shop.categories)
+  const categories = useSelector(state => state.shop.categories) //Selecciono el estado de categorias
 
   return (
     <View style={styles.categoriesContainer}>

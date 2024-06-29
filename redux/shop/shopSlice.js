@@ -5,12 +5,12 @@ import categoryData from '../../data/category.json'
 
 export const shopSlice = createSlice({
     name: 'shop',
-  initialState: {
-    products: productsData,
-    categories: categoryData,
-    categorySeleted: '',
-    productIdSelected: '',
-    productsFilteredByCategory: [],
+        initialState: {
+            products: productsData,
+            categories: categoryData,
+            categorySeleted: '',
+            productIdSelected: '',
+            productsFilteredByCategory: [],
   },
   reducers: {
     setCategorySelected: (state, action) => {
