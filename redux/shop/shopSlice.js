@@ -6,8 +6,8 @@ import categoryData from '../../data/category.json'
 export const shopSlice = createSlice({
     name: 'shop',
   initialState: {
-    productsData,
-    categoryData,
+    products: productsData,
+    categories: categoryData,
     categorySeleted: '',
     productIdSelected: '',
     productsFilteredByCategory: [],
