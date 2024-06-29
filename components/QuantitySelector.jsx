@@ -1,18 +1,27 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { incrementQuantity, decrementQuantity } from '../redux/cart/cartSlice'
 
-export default function QuantitySelector() {
+export default function QuantitySelector({ id }) {
+  const dispatch = useDispatch();
+  const item = useSelector((state) => state.cart.items.find(item => item.id === id));
+
+  const handleIncrement = () => {
+    dispatch(incrementQuantity({ id }));
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrementQuantity({ id }));
+  };
+
   return (
     <View style={styles.container}>
-      <Pressable style={styles.button} onPress={() => decreaseQuantity()}>
-        <Text style={styles.buttonText}>-</Text>
-      </Pressable>
-      <Text style={styles.quantityText}>3</Text>
-      <Pressable style={styles.button} onPress={() => increaseQuantity()}>
-        <Text style={styles.buttonText}>+</Text>
-      </Pressable>
+      <Button title="-" onPress={handleDecrement} />
+        <Text>{item.quantity}</Text>
+      <Button title="+" onPress={handleIncrement} />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

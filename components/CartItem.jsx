@@ -4,7 +4,7 @@ import RemoveButton from './RemoveButton';
 import QuantitySelector from './QuantitySelector'
 
 
-export default function CartItem({ id, image, title, category, price, handleDelete }) {
+export default function CartItem({ id, image, title, category, price }) {
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={{ uri: image }} />
@@ -13,8 +13,8 @@ export default function CartItem({ id, image, title, category, price, handleDele
         <Text style={styles.description}>{category}</Text>
         <Text style={styles.price}>${price}</Text>
         <View>
-          <RemoveButton id={id} handleDelete={handleDelete} />
-          <QuantitySelector/>
+          <RemoveButton id={id} />
+          <QuantitySelector id={id} />
         </View>
       </View>
     </View>

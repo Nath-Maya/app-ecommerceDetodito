@@ -16,7 +16,7 @@ export default function ItemDetail( { route }) {
       <Text style={styles.description}>{product.description}</Text>
       <Text style={styles.price}>${product.price.toFixed(2)}</Text>
       <View>
-        <AddButton/>
+        <AddButton id={product.id}/>
       </View>
     </View>
   )

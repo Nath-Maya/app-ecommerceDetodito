@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import cartData from '../../data/cart.json'
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: [],
-    totalAmount: 0,
+    items: cartData, //Se indica la data de donde se tomara los productos
+    count: 0,
   },
   reducers: {
     addToCart: (state, action) => {
@@ -19,12 +20,11 @@ const cartSlice = createSlice({
           totalPrice: action.payload.price,
         });
       }
-      state.totalAmount += action.payload.price;
+      state.count += action.payload.price;
     },
     removeFromCart: (state, action) => {
       const index = state.items.findIndex(item => item.id === action.payload.id);
       if (index !== -1) {
-        state.totalAmount -= state.items[index].totalPrice;
         state.items.splice(index, 1);
       }
     },
@@ -33,7 +33,7 @@ const cartSlice = createSlice({
       if (item) {
         item.quantity += 1;
         item.totalPrice += item.price;
-        state.totalAmount += item.price;
+        state.count += item.price;
       }
     },
     decrementQuantity: (state, action) => {
@@ -41,7 +41,7 @@ const cartSlice = createSlice({
       if (item && item.quantity > 1) {
         item.quantity -= 1;
         item.totalPrice -= item.price;
-        state.totalAmount -= item.price;
+        state.count -= item.price;
       }
     },
   },
