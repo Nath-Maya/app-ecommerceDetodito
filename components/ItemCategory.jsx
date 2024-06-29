@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { Pressable, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function ItemCategory({name}) {
+export default function ItemCategory({name , onPress}) {
   return (
-    <View style={styles.category}>
-        <Text style={styles.name}>{name}</Text>
-    </View>
+  <Pressable style={styles.category} onPress={onPress}>
+      <Text style={styles.name}>{name}</Text>
+  </Pressable>
   )
 }
 
