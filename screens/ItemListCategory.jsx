@@ -1,16 +1,16 @@
+import React from 'react';
 import { SafeAreaView, FlatList, StyleSheet } from 'react-native';
 import { useState, useEffect, useMemo } from 'react';
-import React from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { useGetProductsByCategoryQuery } from '../service/shopService';
 import ProductItem from '../components/ProductItem';
 import SearchInput from '../components/SearchInput';
-import { useNavigation } from '@react-navigation/native';
 import NotFoundModal from '../components/NotFoundModal';
-import { useDispatch, useSelector } from 'react-redux';
 
 
 // Filtrar productos tanto por selección de categoría en lista o por busqueda de texto
 const filterProducts = (products, textToSearch, selectedCategory) => {
-  let filteredProducts = products;
+  let filteredProducts = products || [];
 
   if (selectedCategory) {
     filteredProducts = filteredProducts.filter(product =>
@@ -31,14 +31,12 @@ export default function ItemListCategory() {
   const [textToSearch, setTextToSearch] = useState(''); // Estado inicial para el texto que ingresa el usuario
   const [modalVisible, setModalVisible] = useState(false); // Estado de visibilidad de modal con mensaje de producto encontrado o no encontrado
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-
-  // Obtener los productos y selector de categorías
-  const products = useSelector(state => state.shop.products);
-  const selectedCategory = useSelector(state => state.shop.categorySelected); // Obtener la categoría seleccionada desde el estado
-
+  const route = useRoute();
+  const { category } = route.params;
+  const { data: products } = useGetProductsByCategoryQuery(category)
+  
   // Filtrar productos basado en la categoría seleccionada y el texto de búsqueda
-  const productsFiltered = useMemo(() => filterProducts(products, textToSearch, selectedCategory), [products, textToSearch, selectedCategory]);
+  const productsFiltered = useMemo(() => filterProducts(products, textToSearch, category), [products, textToSearch, category]);
 
   // Efecto para mostrar modal si no se encuentran productos
   useEffect(() => {

@@ -1,15 +1,14 @@
-import { StyleSheet, FlatList, View } from 'react-native'
+import { StyleSheet, FlatList, View, ActivityIndicator, Text } from 'react-native'
 import React from 'react'
-import ItemCategory from './ItemCategory'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setCategorySelected } from '../redux/shop/shopSlice'
 import { useNavigation } from '@react-navigation/native'
-import ItemListCategory from '../screens/ItemListCategory'
-
+import { useGetCategoriesQuery } from '../service/shopService'
+import ItemCategory from './ItemCategory'
 
 export default function Categories() {
 
-  const categories = useSelector(state => state.shop.categories) //Selecciono el estado de categorias
+  const { data, isLoading, error } = useGetCategoriesQuery()
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
@@ -19,10 +18,26 @@ export default function Categories() {
     navigation.navigate('Categorías', {category})
   };
 
+  if(isLoading){
+    return (
+      
+      <View>
+        <ActivityIndicator size={'Large'} color={"green"}/>
+      </View>
+  )}
+
+  if(error){
+    return (
+      <View>
+        <Text style={styles.textError} >Error al cargar categorias </Text>
+      </View>
+  )}
+  // console.log('\x1b[42;30m%s\x1b[0m', 'Mi data: ' + data);
+
   return (
     <View style={styles.categoriesContainer}>
       <FlatList
-        data={categories}
+        data={data}
         renderItem={({ item }) => 
           <ItemCategory name={item} onPress={() => handleCategoryPress(item)} />}
         keyExtractor={(item, index) => index.toString()}
@@ -38,5 +53,9 @@ const styles = StyleSheet.create({
         height: 60,
         justifyContent: 'center',
         alignItems: 'center',
+      },
+      textError: {
+        color: "red",
+        fontSize: 20,
       }
 })

@@ -7,22 +7,12 @@ import {  useNavigation } from "@react-navigation/native"
 
 export default function Home () {
 
-  const navigation = useNavigation();
-
-    const handlePress = () => {
-        navigation.navigate('Categorías'); 
-      };
-
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.title}>Gran Variedad</Text>
         <Categories/>
         <Text style={styles.subtitle}>¡Aquí encontrarás de todo!</Text>
-        <TouchableOpacity style={styles.button} onPress={handlePress}>
-            <Text style={styles.buttonText}>Explorar</Text>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   )
