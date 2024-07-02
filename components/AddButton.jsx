@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cart/cartSlice';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function AddButton({product}) {

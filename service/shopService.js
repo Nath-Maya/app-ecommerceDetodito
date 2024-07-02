@@ -10,9 +10,16 @@
         }),
         getCategories: builder.query({
             query: () => 'category.json',
-          }),
+        }),
+        postOrder: builder.mutation({
+            query: order => ({
+                url: 'orders.json',
+                method: "POST",
+                body: order,
+            })
+        })
     })
  })
  
  //Crear hooks para utilizarlos
- export const { useGetProductsByCategoryQuery, useGetCategoriesQuery} = shopApi
+ export const { useGetProductsByCategoryQuery, useGetCategoriesQuery, usePostOrderMutation } = shopApi

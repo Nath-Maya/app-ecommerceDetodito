@@ -1,31 +1,45 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 import { getTotalItems, getTotalPrice } from '../redux/cart/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import ConfirmOrderButton from './ConfirmOrderButton';
+import { usePostOrderMutation } from '../service/shopService'
 
 export default function TotalCart() {
 
   const dispatch = useDispatch();
   const totalItems = useSelector(state => state.cart.totalItems);
   const totalPrice = useSelector(state => state.cart.totalPrice);
-  const cartItems = useSelector(state => state.cart.items)
+  const items = useSelector(state => state.cart.items)
+  const user = useSelector(state => state.cart.user)
 
   
   useEffect(() => {
     dispatch(getTotalItems());
     dispatch(getTotalPrice());
     console.log('Total: $' + totalPrice + "- Total productos: " + totalItems);
-  }, [cartItems,dispatch])
+  }, [items,dispatch])
+
+  const cartIsEmpty = items.length === 0
   
+
+const [triggerPost, result] = usePostOrderMutation()
+
+  const confirmOrder = () => {
+    triggerPost({ items, totalPrice, user})
+    console.log("Confirmar pedido");
+  }
 
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Total Items: {totalItems}</Text>
       <Text style={styles.text}>Total Price: ${totalPrice}</Text>
-      <ConfirmOrderButton/>
+      <View style={styles.containerButton}>
+      <Pressable disabled={cartIsEmpty} style={styles.button} onPress={confirmOrder}>
+          <Text style={styles.buttonText}>Confirmar Pedido</Text>
+      </Pressable>
+      </View>
     </View>
   )
 }
@@ -39,6 +53,21 @@ const styles = StyleSheet.create({
       },
       text: {
         fontSize: 18,
+        fontWeight: 'bold',
+      },
+      containerButton: {
+        alignItems: 'center',
+        marginTop: 16,
+      },
+      button: {
+        backgroundColor: 'green',
+        paddingVertical: 8,
+        paddingHorizontal: 15,
+        borderRadius: 10,
+      },
+      buttonText: {
+        color: '#fff',
+        fontSize: 16,
         fontWeight: 'bold',
       },
 })
