@@ -2,15 +2,22 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cart/cartSlice';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 
-export default function AddButton({ product }) {
+export default function AddButton({product}) {
+
   const dispatch = useDispatch();
+  const navigation = useNavigation()
+  // const route = useRoute()
+
+  // const { item } = route.params
 
   //Manejo del evento para agregar producto al carrito con boton
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     console.log("\x1b[34m%s\x1b[0m", "Producto agregado")
+    navigation.goBack();
   };
 
   return (

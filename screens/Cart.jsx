@@ -8,12 +8,12 @@ import CartItem from '../components/CartItem';
 
 export default function Cart() {
 
-  const cartItems = useSelector((state) => state.cart.items);
+  const items = useSelector((state) => state.cart.items);
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={cartItems}
+        data={items}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <CartItem {...item}  />

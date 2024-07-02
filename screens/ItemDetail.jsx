@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import React from 'react'
 import AddButton from '../components/AddButton';
 
@@ -7,10 +7,12 @@ export default function ItemDetail( { route }) {
 
   //Obtener los parametros del producto
   const { product } = route.params;
+
   console.log('\x1b[32m%s\x1b[0m', 'Detalles de producto: ' + product.title);
 
   return (
-    <View style={styles.container}>
+    <ScrollView>
+      <View style={styles.container}>
       <Image style={styles.image} source={{ uri: product.image }} />
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
@@ -19,6 +21,7 @@ export default function ItemDetail( { route }) {
         <AddButton product={product}/>
       </View>
     </View>
+    </ScrollView>
   )
 }
 
