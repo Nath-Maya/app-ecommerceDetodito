@@ -1,6 +1,7 @@
 import { StyleSheet, TextInput, View } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
+import { ROUTE } from '../navigation/Routes';
 
 
 export default function SignUp() {
@@ -12,7 +13,9 @@ export default function SignUp() {
     
     };
 
-    const goToLogin = () => navigate('Login')
+    const goToLogin = () => {
+      navigate(ROUTE.LOGIN)
+    }
 
 
   return (
@@ -41,7 +44,7 @@ export default function SignUp() {
       />
       <Button title="Registrarse" onPress={handleSignUp} />
       <Text>Ya tienes cuenta? </Text>
-      <Button title='Ingresar' onPress={goToLogin}>Ingresar </Button>
+      <Button title='Ingresar' onPress={goToLogin}> Ingresar </Button>
     </View>
   )
 }

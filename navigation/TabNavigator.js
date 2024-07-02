@@ -1,18 +1,15 @@
 import React from 'react'
-import { StyleSheet, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ROUTE } from './Routes';
 import { ShopIcon } from '../icons/ShopIcon';
 import { CartIcon } from '../icons/CartIcon';
 import { OrderIcon } from '../icons/OrderIcon'
 import { ProfileIcon } from '../icons/ProfileIcon'
-import Cart from '../screens/Cart'
-import Orders from '../screens/Orders'
 import MyProfile from '../screens/MyProfile'
 import StackShop from './StackShop';
 import StackCart from './StackCart';
 import StackOrders from './StackOrders';
-import Login from '../screens/Login';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -53,8 +50,8 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name={ROUTE.LOGIN}     
-        component={Login}
+        name={ROUTE.MY_PROFILE}     
+        component={MyProfile}
         options={{
           tabBarIcon: () => (<ProfileIcon/>),
           title: 'Mi Perfil',

@@ -11,6 +11,6 @@ export const ROUTE = {
     MY_LOCATION: 'MyLocation',
     LOCATION_SELECTOR: 'LocationSelector',
     LOGIN: 'Login',
-    SIGN_UP: 'SignUp'
+    SIGN_UP: 'SignUp',
 
 }

@@ -1,6 +1,7 @@
 import { StyleSheet, View, TextInput, Button, Text} from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
+import { ROUTE } from '../navigation/Routes';
 
 export default function Login() {
 
@@ -11,7 +12,7 @@ export default function Login() {
       };
     
       const handleRegister = () => {
-        navigate('SignUp')
+        navigate(ROUTE.SIGN_UP)       
       };
 
   return (
