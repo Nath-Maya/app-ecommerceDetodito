@@ -11,24 +11,20 @@ export default function ItemListCategory() {
 
   // Filtrar productos tanto por selección de categoría en lista o por busqueda de texto
   const filterProducts = (products = [], textToSearch, selectedCategory) => {
-    console.log('Initial products:', products);
+
     let filteredProducts = Array.isArray(products) ? products : [];
 
     if (selectedCategory) {
-      console.log('Filtering by category:', selectedCategory);
       filteredProducts = filteredProducts.filter(product => {
-        console.log(`Comparing product category: ${product.category.toLowerCase()} with selected category: ${selectedCategory.toLowerCase()}`);
         return product.category.toLowerCase() === selectedCategory.toLowerCase();
       });
-      console.log('After category filter:', filteredProducts);
+
     }
 
     if (textToSearch) {
-      console.log('Filtering by text:', textToSearch);
       filteredProducts = filteredProducts.filter(product =>
         product.title.toLowerCase().includes(textToSearch.toLowerCase())
       );
-      console.log('After text filter:', filteredProducts);
     }
 
     return filteredProducts;
@@ -47,7 +43,6 @@ export default function ItemListCategory() {
   // Filtrar productos basado en la categoría seleccionada y el texto de búsqueda
   const productsFiltered = useMemo(() => {
     const result = filterProducts(products, textToSearch, category);
-    console.log('Products filtered:', result);
     return result;
   }, [products, textToSearch, category]);
 
