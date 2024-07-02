@@ -36,9 +36,11 @@ const [triggerPost, result] = usePostOrderMutation()
       <Text style={styles.text}>Total Items: {totalItems}</Text>
       <Text style={styles.text}>Total Price: ${totalPrice}</Text>
       <View style={styles.containerButton}>
-      <Pressable disabled={cartIsEmpty} style={styles.button} onPress={confirmOrder}>
-          <Text style={styles.buttonText}>Confirmar Pedido</Text>
-      </Pressable>
+        {cartIsEmpty ? null : (
+          <Pressable style={styles.button} onPress={confirmOrder}>
+            <Text style={styles.buttonText}>Confirmar Pedido</Text>
+          </Pressable>
+        )}
       </View>
     </View>
   )
