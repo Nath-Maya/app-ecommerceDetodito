@@ -12,6 +12,7 @@ import MyProfile from '../screens/MyProfile'
 import StackShop from './StackShop';
 import StackCart from './StackCart';
 import StackOrders from './StackOrders';
+import Login from '../screens/Login';
 
 
 const Tab = createBottomTabNavigator();
@@ -52,8 +53,8 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name={ROUTE.MY_PROFILE}     
-        component={MyProfile}
+        name={ROUTE.LOGIN}     
+        component={Login}
         options={{
           tabBarIcon: () => (<ProfileIcon/>),
           title: 'Mi Perfil',
@@ -63,6 +64,3 @@ export default function TabNavigator() {
   )
 }
 
-const styles = StyleSheet.create({
-
-})

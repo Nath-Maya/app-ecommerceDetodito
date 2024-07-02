@@ -7,5 +7,10 @@ export const ROUTE = {
     ORDERS: 'Orders',
     MY_PROFILE: 'MyProfile',
     TAB_NAVIGATOR: 'TabNavigator',
-    ITEM_DETAIL: 'ItemDetail'
+    ITEM_DETAIL: 'ItemDetail',
+    MY_LOCATION: 'MyLocation',
+    LOCATION_SELECTOR: 'LocationSelector',
+    LOGIN: 'Login',
+    SIGN_UP: 'SignUp'
+
 }
