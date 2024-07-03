@@ -3,6 +3,18 @@ import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-nativ
 import { useNavigation } from '@react-navigation/native';
 import { ROUTE } from '../navigation/Routes';
 import { useSignUpMutation } from '../service/authService';
+import { useForm, Controller } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+//Esquema de validacion de formulario
+
+const schema = yup.object().shape({
+    name: yup.string().matches(/^[A-Za-z\s]+$/, 'Name can only contain letters and spaces').required('Name is required'),
+    email: yup.string().email('Invalid email format').required('Email is required'),
+    password: yup.string().required('Password is required')
+});
+
 
 
 export default function SignUp() {
@@ -13,11 +25,14 @@ export default function SignUp() {
     const [password, setPassword] = useState('');
     const [triggerSignUp, result] = useSignUpMutation()
 
-    const handleSignUp = async () => {
-      console.log("----", email, name, password);
+    const { control, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
+
+    const handleSignUp = async (data) => {
+    const { name, email, password } = data;
       try {
         const payload = await triggerSignUp({ name, email, password }).unwrap()
-        console.log("Registro: " + payload);
       } catch (error) {
         console.log(error);
       }
@@ -29,29 +44,56 @@ export default function SignUp() {
 
     return (
         <View style={styles.container}>
-            <TextInput
-                style={styles.input}
-                placeholder="Nombre"
-                onChangeText={setName}
-                value={name}
-                autoCapitalize="words"
+            <Controller
+                control={control}
+                name="name"
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Nombre"
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                        autoCapitalize="words"
+                    />
+                )}
             />
-            <TextInput
-                style={styles.input}
-                placeholder="Email"
-                onChangeText={setEmail}
-                value={email}
-                keyboardType="email-address"
-                autoCapitalize="none"
+            {errors.name && <Text style={styles.errorText}>{errors.name.message}</Text>}
+
+            <Controller
+                control={control}
+                name="email"
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                    />
+                )}
             />
-            <TextInput
-                style={styles.input}
-                placeholder="Contraseña"
-                onChangeText={setPassword}
-                value={password}
-                secureTextEntry
+            {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
+
+            <Controller
+                control={control}
+                name="password"
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Contraseña"
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                        secureTextEntry
+                    />
+                )}
             />
-            <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+            {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
+
+            <TouchableOpacity style={styles.button} onPress={handleSubmit(handleSignUp)}>
                 <Text style={styles.buttonText}>Registrarse</Text>
             </TouchableOpacity>
             <Text style={styles.loginText}>¿Ya tienes cuenta?</Text>
