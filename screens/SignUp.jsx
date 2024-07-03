@@ -20,9 +20,6 @@ const schema = yup.object().shape({
 export default function SignUp() {
 
     const { navigate } = useNavigation();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [triggerSignUp, result] = useSignUpMutation()
 
     const { control, handleSubmit, formState: { errors } } = useForm({
