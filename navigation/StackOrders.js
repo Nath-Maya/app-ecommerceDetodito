@@ -7,6 +7,7 @@ import Orders from '../screens/Orders';
 const Stack = createStackNavigator();
 
 export default function StackOrders() {
+  
   return (
     <Stack.Navigator 
       screenOptions={{

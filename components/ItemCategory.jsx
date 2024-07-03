@@ -1,7 +1,9 @@
 import { Pressable, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
+
 export default function ItemCategory({name , onPress}) {
+
   return (
   <Pressable style={styles.category} onPress={onPress}>
       <Text style={styles.name}>{name}</Text>

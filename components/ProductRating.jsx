@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export default function ProductRating( { rating }) {
+  
   return (
     <View style={styles.ratingContainer}>
       <Stars

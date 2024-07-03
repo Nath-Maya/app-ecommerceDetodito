@@ -7,6 +7,7 @@ import { shopApi } from '../service/shopService';
 import { authApi } from '../service/authService';
 
 const store = configureStore({
+  
   reducer: {
     auth: authReducer,
     cart: cartReducer,

@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 export default function AddButton({product}) {
-
+  
   const dispatch = useDispatch();
   const navigation = useNavigation()
   // const route = useRoute()

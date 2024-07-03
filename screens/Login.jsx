@@ -3,14 +3,18 @@ import { StyleSheet, View, TextInput, Button, Text, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 import { ROUTE } from '../navigation/Routes';
 
+
 export default function Login() {
+
+
     const { navigate } = useNavigation();
+    // const user = useSelector(state => state.auth.value.user)
 
     const handleLogin = () => {
-        // Lógica para iniciar sesión
         console.log('Iniciar sesión');
     };
     
+    //Redireccionar a Crear cuenta
     const handleRegister = () => {
         navigate(ROUTE.SIGN_UP);
     };

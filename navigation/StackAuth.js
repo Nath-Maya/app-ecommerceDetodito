@@ -8,6 +8,7 @@ import TabNavigator from './TabNavigator'
 const Stack = createStackNavigator()
 
 export default function StackAuth() {
+  
   return (
     <Stack.Navigator initialRouteName={ROUTE.LOGIN}>
       <Stack.Screen

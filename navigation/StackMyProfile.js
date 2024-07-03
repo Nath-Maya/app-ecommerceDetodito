@@ -9,6 +9,7 @@ import LocationSelector from '../screens/LocationSelector'
 const Stack = createStackNavigator()
 
 export default function StackMyProfile() {
+  
   return (
     <Stack.Navigator
     screenOptions={{

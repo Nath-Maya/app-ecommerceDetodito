@@ -4,26 +4,18 @@ import { useNavigation } from '@react-navigation/native';
 import { ROUTE } from '../navigation/Routes';
 import { useSignUpMutation } from '../service/authService';
 import { useForm, Controller } from 'react-hook-form';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-//Esquema de validacion de formulario
-
-const schema = yup.object().shape({
-    name: yup.string().matches(/^[A-Za-z\s]+$/, 'Name can only contain letters and spaces').required('Name is required'),
-    email: yup.string().email('Invalid email format').required('Email is required'),
-    password: yup.string().required('Password is required')
-});
-
+import signUpShema from '../validations/signUpShema'
 
 
 export default function SignUp() {
+
 
     const { navigate } = useNavigation();
     const [triggerSignUp, result] = useSignUpMutation()
 
     const { control, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schema)
+        resolver: yupResolver(signUpShema)
     });
 
     const handleSignUp = async (data) => {
@@ -31,14 +23,15 @@ export default function SignUp() {
       try {
         const payload = await triggerSignUp({ name, email, password }).unwrap()
       } catch (error) {
-        console.log(error);
+        console.log(error.path);
+        console.log(error.message);
       }
-        
-
     };
 
+    //Redireccionar a Iniciar Seccion
     const goToLogin = () => { navigate(ROUTE.LOGIN)};
 
+    
     return (
         <View style={styles.container}>
             <Controller

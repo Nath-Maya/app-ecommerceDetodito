@@ -7,6 +7,7 @@ import Cart from '../screens/Cart';
 const Stack = createStackNavigator();
 
 export default function StackCart() {
+  
   return (
     <Stack.Navigator 
       screenOptions={{

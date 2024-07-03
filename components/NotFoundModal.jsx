@@ -3,6 +3,7 @@ import React from 'react'
 
 
 export default function NotFoundModal({ visible, textToSearch, onClose }) {
+  
   return (
     <Modal
     animationType="slide"

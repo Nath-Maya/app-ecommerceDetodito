@@ -5,6 +5,7 @@ import QuantitySelector from './QuantitySelector'
 
 
 export default function CartItem({ id, image, title, category, price }) {
+
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={{ uri: image }} />

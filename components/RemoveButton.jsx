@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../redux/cart/cartSlice';
 
+
 export default function RemoveButton({ id }) {
 
   const dispatch = useDispatch()

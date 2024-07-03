@@ -3,6 +3,7 @@ import { DATABASE_URL } from "../database/database";
 import { apiKey } from "../database/database";
 
 export const authApi = createApi({
+    
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({ baseUrl: DATABASE_URL }),
     endpoints: builder => ({

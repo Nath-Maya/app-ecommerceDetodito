@@ -3,7 +3,9 @@ import React from 'react'
 import { formatDate } from '../utils/formatDate'
 import { formatPrice } from '../utils/formatPrice'
 
+
 export default function OrderItem({createdAt, totalPrice}) {
+
   return (
     <View style={styles.orderItem}>
         <Text>{formatDate(createdAt)}</Text>

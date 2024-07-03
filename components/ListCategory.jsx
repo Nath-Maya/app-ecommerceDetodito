@@ -5,6 +5,7 @@ import products from '../data/products.json'
 import SearchInput from './SearchInput'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+
 export default function ListCategory() {
 
   return (

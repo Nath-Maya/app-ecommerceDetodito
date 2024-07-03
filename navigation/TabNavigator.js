@@ -11,10 +11,10 @@ import StackCart from './StackCart';
 import StackOrders from './StackOrders';
 
 
-
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
+  
   return (
     <Tab.Navigator
       screenOptions={{

@@ -4,7 +4,9 @@ import { useNavigation } from '@react-navigation/native'
 import { theme } from '../config/theme';
 import { ROUTE } from '../navigation/Routes';
 
+
 export default function Welcome() {
+
 
     const navigation = useNavigation();
     //Manejar el evento de presionar el boton ingresar

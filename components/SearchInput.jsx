@@ -4,6 +4,7 @@ import { SearchIcon } from '../icons/SearchIcon'
 
 
 export default function SearchInput( props ) {
+  
   return (
     <View style={styles.searchInput}>
       <SearchIcon/>

@@ -7,6 +7,7 @@ import TabNavigator from './TabNavigator';
 const Stack = createStackNavigator();
 
 export default function StackWelcome() {
+  
   return (
     <Stack.Navigator initialRouteName='Welcome'>
         <Stack.Screen name={ROUTE.WELCOME} component={Welcome}/>

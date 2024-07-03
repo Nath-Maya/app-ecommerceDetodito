@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useGetCategoriesQuery } from '../service/shopService'
 import ItemCategory from './ItemCategory'
 
+
 export default function Categories() {
 
   const { data, isLoading, error } = useGetCategoriesQuery()

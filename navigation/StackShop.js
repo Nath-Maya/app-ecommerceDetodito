@@ -8,6 +8,7 @@ import ItemDetail from '../screens/ItemDetail';
 const Stack = createStackNavigator();
 
 export default function StackShop() {
+  
   return (
     <Stack.Navigator initialRouteName='Welcome'
       screenOptions={{

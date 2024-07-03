@@ -2,7 +2,9 @@ import { View, Text, StyleSheet, Image, Pressable, useWindowDimensions } from 'r
 import React from 'react'
 import ProductRating from './ProductRating';
 
+
 export default function ProductItem({title, price, image, onPress, rating}) {
+  
   const { width } = useWindowDimensions();
   const smallDevice = width < 350;
 

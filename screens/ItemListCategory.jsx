@@ -7,6 +7,7 @@ import ProductItem from '../components/ProductItem';
 import SearchInput from '../components/SearchInput';
 import NotFoundModal from '../components/NotFoundModal';
 
+
 export default function ItemListCategory() {
 
   // Filtrar productos tanto por selección de categoría en lista o por busqueda de texto

@@ -6,9 +6,9 @@ import TotalCart from '../components/TotalCart';
 import CartItem from '../components/CartItem';
 
 
-
 export default function Cart() {
 
+  
   const items = useSelector((state) => state.cart.items);
 
 
