@@ -6,7 +6,6 @@ import { ROUTE } from '../navigation/Routes';
 
 export default function Welcome() {
 
-    //Se obtiene la instancia de navegacion para dirigir al usuario
     const navigation = useNavigation();
     //Manejar el evento de presionar el boton ingresar
     const handlePress = () => {
