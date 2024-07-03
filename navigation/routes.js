@@ -12,5 +12,6 @@ export const ROUTE = {
     LOCATION_SELECTOR: 'LocationSelector',
     LOGIN: 'Login',
     SIGN_UP: 'SignUp',
+    STACK_AUTH: 'StackAuth'
 
 }

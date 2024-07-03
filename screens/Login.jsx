@@ -8,7 +8,8 @@ export default function Login() {
     const { navigate } = useNavigation()
 
     const handleLogin = () => {
-        console.log("Ingresar");
+      // const userData = { email };
+      // onLogin(userData);
       };
     
       const handleRegister = () => {

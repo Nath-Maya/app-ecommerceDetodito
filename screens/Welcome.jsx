@@ -10,7 +10,7 @@ export default function Welcome() {
     const navigation = useNavigation();
     //Manejar el evento de presionar el boton ingresar
     const handlePress = () => {
-        navigation.navigate(ROUTE.TAB_NAVIGATOR); 
+        navigation.navigate(ROUTE.STACK_AUTH); 
       };
 
   return (

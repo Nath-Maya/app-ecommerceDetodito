@@ -10,7 +10,8 @@ export default function SignUp() {
 
 
     const handleSignUp = () => {
-    
+      const userData = { email, name }; // Simula los datos del usuario
+       onLogin(userData);
     };
 
     const goToLogin = () => {
