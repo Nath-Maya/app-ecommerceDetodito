@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const authSlice = createSlice({
      name: 'auth',
      initialState: {
-        value: {user: null, token: null},
+        value: {user: null, token: null, imageCamera: null},
      },
      reducers: {
         setUser: (state, action) => {
@@ -14,9 +14,12 @@ export const authSlice = createSlice({
             state.value.user = null,
             state.value.token = null
         },
+        setCameraImage: (state, action) => {
+          state.value.imageCamera = action.payload
+        }
       },
 })
 
-export const { setUser, clearUser } = authSlice.actions
+export const { setUser, clearUser, setCameraImage } = authSlice.actions
 
 export default authSlice.reducer

@@ -1,17 +1,22 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { PermissionStatus, launchImageLibraryAsync } from 'expo-image-picker'
 import * as ImagePicker from 'expo-image-picker'
-
+import { useDispatch } from 'react-redux'
+import { setCameraImage } from '../redux/auth/authSlice'
+import { useNavigation } from '@react-navigation/native'
 
 export default function ImageSelector() {
 
-  const [ image, setImage ] = useState(null)
+  const [image, setImage] = useState(null)
+  const dispatch = useDispatch()
+  const { goBack } = useNavigation()
+
 
   const verifyPermissions = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync()
-    if (!granted ) {
-      Alert.alert('Permisos insuficientes', 'Necesitas dar permisos para usar la camara', [{text: 'Ok'}])
+    if (!granted) {
+      Alert.alert('Permisos insuficientes', 'Necesitas dar permisos para usar la cámara', [{ text: 'Ok' }])
       return false
     }
     return true
@@ -20,7 +25,7 @@ export default function ImageSelector() {
   const pickImage = async () => {
     const hasPermission = await verifyPermissions()
     if (!hasPermission) return
-    
+
     const image = await launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -29,10 +34,15 @@ export default function ImageSelector() {
       quality: 0.25
     })
     if (image.canceled) return
-    setImage(`data:image/jpeg;base64,${image.assets[0].base64}`)
+    const imageUri = `data:image/jpeg;base64,${image.assets[0].base64}`;
+    setImage(imageUri);
+    dispatch(setImageCamera(imageUri));
   }
 
-  const confirmImage = () => { }
+  const confirmImage = () => {
+    dispatch(setCameraImage(image))
+    goBack()
+  }
 
   return (
     <View style={styles.imageSelector}>
@@ -40,16 +50,20 @@ export default function ImageSelector() {
         <>
           <Image source={{ uri: image }} style={styles.image} />
           <View style={styles.actions}>
-            <Button onPress={pickImage}>Tomar otra</Button>
-            <Button onPress={confirmImage}>
-              {isSavingProfileImage ? 'Confirmando...' : 'Confirmar'}
-            </Button>
+            <Pressable onPress={pickImage}>
+              <Text>Tomar otra</Text>
+            </Pressable>
+            <Pressable onPress={confirmImage}>
+              <Text>Confirmar</Text>
+            </Pressable>
           </View>
         </>
       ) : (
         <>
           <Text>No hay foto para mostrar...</Text>
-          <Button onPress={pickImage}>Tomar foto</Button>
+          <Pressable onPress={pickImage}>
+            <Text>Tomar foto</Text>
+          </Pressable>
         </>
       )}
     </View>

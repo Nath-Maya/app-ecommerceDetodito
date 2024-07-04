@@ -1,24 +1,30 @@
-import { View, Text, Image, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 export default function MyProfile() {
+  const { navigate } = useNavigation();
+  const imageCamera = useSelector(state => state.auth.value.imageCamera);
 
   const handleAddPhoto = () => {
-    // Lógica para agregar foto de perfil
-    console.log("Agregar foto de perfil");
+    navigate('ImageSelector');
   };
 
   const handleAddLocation = () => {
-    // Lógica para agregar ubicación
-    console.log("Agregar ubicación");
+    console.log('Agregar ubicación');
   };
 
   return (
     <View style={styles.myProfile}>
       <Text style={styles.title}>Mi cuenta</Text>
       <Image
-        source={require('../icons/myProfile/profile-image-placeholder-png.png')}
-        resizeMode='cover'
+        source={
+          imageCamera
+            ? { uri: imageCamera }
+            : require('../icons/myProfile/profile-image-placeholder-png.png')
+        }
+        resizeMode="cover"
         style={styles.image}
       />
       <TouchableOpacity style={styles.button} onPress={handleAddPhoto}>
