@@ -15,11 +15,10 @@ const store = configureStore({
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false, 
-    }).concat(shopApi.middleware).concat(authApi.middleware),
-  devTools: true, 
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware()
+      .concat(shopApi.middleware)
+      .concat(authApi.middleware),
 });
 
 setupListeners(store.dispatch);

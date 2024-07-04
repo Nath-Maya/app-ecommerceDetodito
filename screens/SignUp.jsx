@@ -5,7 +5,7 @@ import { ROUTE } from '../navigation/Routes';
 import { useSignUpMutation } from '../service/authService';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import signUpShema from '../validations/signUpShema'
+import signUpSchema from '../validations/signUpSchema'
 
 
 export default function SignUp() {
@@ -15,22 +15,20 @@ export default function SignUp() {
     const [triggerSignUp, result] = useSignUpMutation()
 
     const { control, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(signUpShema)
+        resolver: yupResolver(signUpSchema)
     });
 
+
     const handleSignUp = async (data) => {
-    const { name, email, password } = data;
-      try {
-        const payload = await triggerSignUp({ name, email, password }).unwrap()
-      } catch (error) {
-        console.log(error.path);
-        console.log(error.message);
-      }
+        const { email, password } = data;
+        try {
+            await triggerSignUp({ email, password }).unwrap();
+            // Redireccionar a la pantalla de inicio de sesión después de registrarse
+            navigate(ROUTE.LOGIN);
+        } catch (error) {
+            console.log(error);
+        }
     };
-
-    //Redireccionar a Iniciar Seccion
-    const goToLogin = () => { navigate(ROUTE.LOGIN)};
-
     
     return (
         <View style={styles.container}>
@@ -87,7 +85,7 @@ export default function SignUp() {
                 <Text style={styles.buttonText}>Registrarse</Text>
             </TouchableOpacity>
             <Text style={styles.loginText}>¿Ya tienes cuenta?</Text>
-            <TouchableOpacity onPress={goToLogin}>
+            <TouchableOpacity onPress={() => navigate(ROUTE.LOGIN)}>
                 <Text style={styles.loginLink}>Ingresar</Text>
             </TouchableOpacity>
         </View>
