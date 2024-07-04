@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function ListAddress() {
+export default function ImageSelector() {
   return (
     <View>
-      <Text>ListAddress</Text>
+      <Text>ImageSelector</Text>
     </View>
   )
 }

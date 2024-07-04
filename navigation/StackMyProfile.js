@@ -30,6 +30,11 @@ export default function StackMyProfile() {
             component={LocationSelector}
             options={{ headerTitle: 'Seleccionar ubicacion' }}
             />
+        <Stack.Screen
+            name={ROUTE.IMAGE_SELECTOR}
+            component={ImageSelector}
+            options={{ headerTitle: 'Seleccionar imagen' }}
+            />
     </Stack.Navigator>
   )
 }

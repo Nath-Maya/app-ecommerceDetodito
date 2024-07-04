@@ -23,7 +23,7 @@ export default function TabNavigator() {
         tabBarInactiveTintColor: 'green'
       }}
     >
-      <Tab.Screen
+      {/* <Tab.Screen
         name='Tienda'
         component={StackShop}
         options={{
@@ -48,7 +48,7 @@ export default function TabNavigator() {
           title: 'Ordenes',
           headerShown: false,
         }}
-      />
+      /> */}
       <Tab.Screen
         name={ROUTE.MY_PROFILE}     
         component={MyProfile}

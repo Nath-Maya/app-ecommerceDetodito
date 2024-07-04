@@ -9,8 +9,8 @@ const Stack = createStackNavigator();
 export default function StackWelcome() {
   
   return (
-    <Stack.Navigator initialRouteName='Welcome'>
-        <Stack.Screen name={ROUTE.WELCOME} component={Welcome}/>
+    <Stack.Navigator >
+        {/* <Stack.Screen name={ROUTE.WELCOME} component={Welcome}/> */}
         <Stack.Screen name={ROUTE.HOME} component={TabNavigator}/>
     </Stack.Navigator>
   )

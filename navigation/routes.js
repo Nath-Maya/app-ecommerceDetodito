@@ -1,17 +1,18 @@
 export const ROUTE = {
-    WELCOME: 'Welcome',
-    HOME: 'Home',
     CART: 'Cart',
-    PRODUCTS: 'Products',
     CATEGORIES: 'ItemListCategory',
-    ORDERS: 'Orders',
-    MY_PROFILE: 'MyProfile',
-    TAB_NAVIGATOR: 'TabNavigator',
+    HOME: 'Home',
     ITEM_DETAIL: 'ItemDetail',
-    MY_LOCATION: 'MyLocation',
+    IMAGE_SELECTOR: 'ImageSelector',
     LOCATION_SELECTOR: 'LocationSelector',
     LOGIN: 'Login',
+    MY_LOCATION: 'MyLocation',
+    MY_PROFILE: 'MyProfile',
+    ORDERS: 'Orders',
+    PRODUCTS: 'Products',
     SIGN_UP: 'SignUp',
-    STACK_AUTH: 'StackAuth'
+    STACK_AUTH: 'StackAuth',
+    TAB_NAVIGATOR: 'TabNavigator',
+    WELCOME: 'Welcome'
 
 }

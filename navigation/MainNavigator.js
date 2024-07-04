@@ -12,11 +12,11 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={ROUTE.WELCOME}>
-        <Stack.Screen
+        {/* <Stack.Screen
           name={ROUTE.WELCOME}
           component={Welcome}
           options={{ headerShown: false }}
-        />
+        /> */}
         <Stack.Screen
           name={ROUTE.STACK_AUTH}
           component={StackAuth}
