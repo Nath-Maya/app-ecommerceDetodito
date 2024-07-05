@@ -1,9 +1,9 @@
- import { DATABASE_URL } from "../database/database"
- import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import databaseURL from '../database/firebaseConfig'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
  export const shopApi = createApi({
     
-    baseQuery: fetchBaseQuery({ baseUrl:DATABASE_URL }), //Defino la base de datos
+    baseQuery: fetchBaseQuery({ baseUrl: databaseURL }), 
     endpoints: builder => ({
         getProductsByCategory: builder.query({
             query: category =>

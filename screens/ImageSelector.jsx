@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { setCameraImage } from '../redux/auth/authSlice'
 import { useNavigation } from '@react-navigation/native'
 
+
 export default function ImageSelector() {
 
   const [image, setImage] = useState(null)

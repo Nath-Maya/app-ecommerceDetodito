@@ -12,10 +12,11 @@ const firebaseConfig = {
   appId: "1:802460070875:web:f1663d5f5ab2da4accedfe"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(ReactNativeAsyncStorage)
   });
 
-export { auth };
+  const databaseURL = firebaseConfig.databaseURL;
+
+  export { auth, databaseURL };

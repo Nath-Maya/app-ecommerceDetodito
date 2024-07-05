@@ -3,16 +3,13 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
+
 export default function MyProfile() {
   const { navigate } = useNavigation();
   const imageCamera = useSelector(state => state.auth.value.imageCamera);
 
   const handleAddPhoto = () => {
     navigate('ImageSelector');
-  };
-
-  const handleAddLocation = () => {
-    console.log('Agregar ubicación');
   };
 
   return (
@@ -29,9 +26,6 @@ export default function MyProfile() {
       />
       <TouchableOpacity style={styles.button} onPress={handleAddPhoto}>
         <Text style={styles.buttonText}>Agregar foto de perfil</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handleAddLocation}>
-        <Text style={styles.buttonText}>Agregar ubicación</Text>
       </TouchableOpacity>
     </View>
   );
