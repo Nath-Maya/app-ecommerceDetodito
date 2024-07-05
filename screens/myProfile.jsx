@@ -1,12 +1,22 @@
+import React, { useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetProfileImageQuery } from '../service/userService';
+import { setProfilePicture, setUserPhoto } from '../redux/auth/authSlice';
 
 export default function MyProfile() {
   const { navigate } = useNavigation();
+  const user = useSelector(state => state.auth.value.user);
   const profilePicture = useSelector(state => state.auth.value.profilePicture);
+  const { data: profileImage } = useGetProfileImageQuery(user.localId);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (profileImage) {
+      dispatch(setUserPhoto(profileImage.image));
+    }
+  }, [profileImage, dispatch]);
 
   const handleAddPhoto = () => {
     navigate('ImageSelector');
@@ -19,9 +29,11 @@ export default function MyProfile() {
         source={
           profilePicture
             ? { uri: profilePicture }
-            : require('../icons/myProfile/profile-image-placeholder-png.png')
+            : user.photo
+              ? { uri: user.photo }
+              : require('../icons/myProfile/profile-image-placeholder-png.png')
         }
-        resizeMode="cover"
+        resizeMode='cover'
         style={styles.image}
       />
       <TouchableOpacity style={styles.button} onPress={handleAddPhoto}>

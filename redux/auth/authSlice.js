@@ -10,40 +10,40 @@ export const authSlice = createSlice({
         photo: null,
       },
       token: null,
-      profilePicture: null,
+      profilePicture: null, 
     },
   },
   reducers: {
     setUser: (state, action) => {
-      state.value.user.email = action.payload.email
-      state.value.user.localId = action.payload.localId
-      state.value.token = action.payload.token
+      state.value.user.email = action.payload.email;
+      state.value.user.localId = action.payload.localId;
+      state.value.token = action.payload.token;
     },
     setProfilePicture: (state, action) => {
-      state.value.profilePicture = action.payload
+      state.value.profilePicture = action.payload;
     },
     setUserPhoto: (state, action) => {
-      state.value.user.photo = action.payload
+      state.value.user.photo = action.payload;
     },
     logout: state => {
       state.value = {
         user: {
           email: null,
           localId: null,
+          photo: null, 
         },
         token: null,
-        profilePicture: null,
-        photo: null,
-      }
+        profilePicture: null, 
+      };
     },
   },
-})
+});
 
 export const {
   setUser,
   setProfilePicture,
   setUserPhoto,
   logout,
-} = authSlice.actions
+} = authSlice.actions;
 
-export default authSlice.reducer
+export default authSlice.reducer;

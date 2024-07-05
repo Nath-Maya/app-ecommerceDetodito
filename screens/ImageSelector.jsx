@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
 import { launchImageLibraryAsync } from 'expo-image-picker'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setProfilePicture } from '../redux/auth/authSlice'
 import { useNavigation } from '@react-navigation/native'
 import { usePostProfileImageMutation } from '../service/userService'
@@ -14,8 +14,9 @@ export default function ImageSelector() {
   const dispatch = useDispatch()
   const { goBack } = useNavigation()
   const [ triggerSaveProfileImage ] = usePostProfileImageMutation()
-  const localId = 'adfaergadad'
 
+  const localId = useSelector(state => state.auth.value.user.localId)
+  console.log(localId);
 
   const verifyPermissions = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync()
@@ -40,7 +41,7 @@ export default function ImageSelector() {
     if (image.canceled) return
     const imageUri = `data:image/jpeg;base64,${image.assets[0].base64}`;
     setImage(imageUri);
-    dispatch(setprofilePicture(imageUri));
+    dispatch(setProfilePicture(imageUri));
   }
 
   const confirmImage = () => {
