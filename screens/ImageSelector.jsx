@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
 import { launchImageLibraryAsync } from 'expo-image-picker'
 import { useDispatch } from 'react-redux'
-import { setCameraImage } from '../redux/auth/authSlice'
+import { setProfilePicture } from '../redux/auth/authSlice'
 import { useNavigation } from '@react-navigation/native'
 import { usePostProfileImageMutation } from '../service/userService'
 
@@ -40,12 +40,12 @@ export default function ImageSelector() {
     if (image.canceled) return
     const imageUri = `data:image/jpeg;base64,${image.assets[0].base64}`;
     setImage(imageUri);
-    dispatch(setImageCamera(imageUri));
+    dispatch(setprofilePicture(imageUri));
   }
 
   const confirmImage = () => {
     try {
-      dispatch(setCameraImage(image));
+      dispatch(setProfilePicture(image));
       triggerSaveProfileImage({image, localId});
       goBack();
     } catch (error) {

@@ -11,7 +11,7 @@ export default function StackAuth() {
   
   return (
     <Stack.Navigator initialRouteName={ROUTE.LOGIN}>
-      {/* <Stack.Screen
+      <Stack.Screen
         name={ROUTE.LOGIN}
         component={Login}
         options={{ title: 'De todito' }}
@@ -20,11 +20,11 @@ export default function StackAuth() {
         name={ROUTE.SIGN_UP}
         component={SignUp}
         options={{ title: 'Crear cuenta' }}
-      /> */}
+      />
       <Stack.Screen
         name={ROUTE.TAB_NAVIGATOR} 
         component={TabNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, title: 'Tienda' }}
       />
     </Stack.Navigator>
   )

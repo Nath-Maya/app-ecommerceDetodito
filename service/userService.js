@@ -18,4 +18,4 @@ export const userApi = createApi({
     })
 })
 
-export const {useGetProfileImageQuery, usePostProfileImageMutation, } = userApi
+export const { useGetProfileImageQuery, usePostProfileImageMutation } = userApi

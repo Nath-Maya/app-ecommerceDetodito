@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 export default function MyProfile() {
   const { navigate } = useNavigation();
-  const imageCamera = useSelector(state => state.auth.value.imageCamera);
+  const profilePicture = useSelector(state => state.auth.value.profilePicture);
 
   const handleAddPhoto = () => {
     navigate('ImageSelector');
@@ -17,8 +17,8 @@ export default function MyProfile() {
       <Text style={styles.title}>Mi cuenta</Text>
       <Image
         source={
-          imageCamera
-            ? { uri: imageCamera }
+          profilePicture
+            ? { uri: profilePicture }
             : require('../icons/myProfile/profile-image-placeholder-png.png')
         }
         resizeMode="cover"

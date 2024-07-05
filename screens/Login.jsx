@@ -8,9 +8,11 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { loginSchema } from '../validations/loginSchema';
 import { auth } from '../database/firebaseConfig';
 
+
 export default function Login() {
+
     const { navigate } = useNavigation();
-    const [loginError, setLoginError] = useState('');
+    const [ loginError, setLoginError ] = useState('');
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema),
