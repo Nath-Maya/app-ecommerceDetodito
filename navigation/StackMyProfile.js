@@ -12,7 +12,7 @@ export default function StackMyProfile() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShadowVisible: false,
+        headerShadowVisible: true,
       }}>
       <Stack.Screen
         name={ROUTE.MY_PROFILE}

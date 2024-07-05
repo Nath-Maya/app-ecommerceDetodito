@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
-import { PermissionStatus, launchImageLibraryAsync } from 'expo-image-picker'
 import * as ImagePicker from 'expo-image-picker'
+import { launchImageLibraryAsync } from 'expo-image-picker'
 import { useDispatch } from 'react-redux'
 import { setCameraImage } from '../redux/auth/authSlice'
 import { useNavigation } from '@react-navigation/native'
+import { usePostProfileImageMutation } from '../service/userService'
 
 
 export default function ImageSelector() {
@@ -12,6 +13,8 @@ export default function ImageSelector() {
   const [image, setImage] = useState(null)
   const dispatch = useDispatch()
   const { goBack } = useNavigation()
+  const [ triggerSaveProfileImage ] = usePostProfileImageMutation()
+  const localId = 'adfaergadad'
 
 
   const verifyPermissions = async () => {
@@ -41,9 +44,15 @@ export default function ImageSelector() {
   }
 
   const confirmImage = () => {
-    dispatch(setCameraImage(image))
-    goBack()
-  }
+    try {
+      dispatch(setCameraImage(image));
+      triggerSaveProfileImage({image, localId});
+      goBack();
+    } catch (error) {
+      console.error("Error al confirmar la imagen: ", error);
+    }
+  };
+  
 
   return (
     <View style={styles.imageSelector}>

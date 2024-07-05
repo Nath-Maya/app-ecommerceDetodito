@@ -1,4 +1,4 @@
-import databaseURL from '../database/firebaseConfig'
+import { databaseURL } from '../database/firebaseConfig'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
  export const shopApi = createApi({
