@@ -11,7 +11,6 @@ export default function RemoveButton({ id }) {
   const handleRemove = () => {
     dispatch(removeFromCart({ id }));
     console.log("\x1b[35m%s\x1b[0m", "Producto Eliminado")
-
   };
 
   return (

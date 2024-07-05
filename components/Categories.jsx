@@ -33,7 +33,6 @@ export default function Categories() {
         <Text style={styles.textError} >Error al cargar categorias </Text>
       </View>
   )}
-  // console.log('\x1b[42;30m%s\x1b[0m', 'Mi data: ' + data);
 
   return (
     <View style={styles.categoriesContainer}>

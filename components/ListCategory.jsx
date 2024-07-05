@@ -1,8 +1,6 @@
 import { StyleSheet, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import category from '../data/category.json'
 import products from '../data/products.json'
-import SearchInput from './SearchInput'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
