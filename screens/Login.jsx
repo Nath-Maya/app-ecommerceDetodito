@@ -9,12 +9,14 @@ import { auth } from '../database/firebaseConfig';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/auth/authSlice'; 
 import { loginSchema } from '../validations/loginSchema';
+import { useEffect } from 'react';
+import { insertSession, fetchSession, init } from '../database/SQliteConfig';
 
 
 export default function Login() {
     
     const { navigate } = useNavigation();
-    const [loginError, setLoginError] = useState('');
+    const [ loginError, setLoginError ] = useState('');
     const dispatch = useDispatch(); 
 
     const { control, handleSubmit, formState: { errors } } = useForm({
@@ -25,6 +27,20 @@ export default function Login() {
         }
     });
 
+    useEffect(() => {
+        const initializeDatabase = async () => {
+            await init();
+            const session = await fetchSession();
+            if (session) {
+                dispatch(setUser({ email: session.email, localId: session.localId, token: session.token }));
+                navigate(ROUTE.TAB_NAVIGATOR);
+            }
+        };
+
+        initializeDatabase();
+    }, []);
+
+
     const handleLogin = async (data) => {
         const { email, password } = data;
 
@@ -32,14 +48,19 @@ export default function Login() {
             console.error('El email y la contraseña son obligatorios.');
             return;
         }
-
+  
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
             if (user && user.email) {
-                console.log('\x1b[34m%s\x1b[0m', `Usuario ${user.email} ha iniciado sesión.`);
-                dispatch(setUser({ email: user.email, localId: user.uid, token: user.stsTokenManager.accessToken }));
+                console.log(`Usuario ${user.email} ha iniciado sesión.`);
+                const token = await user.getIdToken();
+                const userSession = { email: user.email, localId: user.uid, token };
+                await insertSession(userSession);
+                dispatch(setUser(userSession));
+
+                console.log(userSession);
 
                 navigate(ROUTE.TAB_NAVIGATOR);
             } else {

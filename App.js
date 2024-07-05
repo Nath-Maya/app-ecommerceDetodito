@@ -2,6 +2,7 @@ import React from 'react';
 import MainNavigator from './navigation/MainNavigator';
 import store from './store/store';
 import { Provider } from 'react-redux';
+import { init } from './database/SQliteConfig';
 
 init()
   .then(() => console.log('Database initialized'))

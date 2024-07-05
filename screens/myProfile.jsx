@@ -6,12 +6,14 @@ import { useGetProfileImageQuery } from '../service/userService';
 import { setProfilePicture, setUserPhoto } from '../redux/auth/authSlice';
 
 export default function MyProfile() {
+
   const { navigate } = useNavigation();
   const user = useSelector(state => state.auth.value.user);
   const profilePicture = useSelector(state => state.auth.value.profilePicture);
   const { data: profileImage } = useGetProfileImageQuery(user.localId);
   const dispatch = useDispatch();
 
+  //Gestion de imagen de perfil
   useEffect(() => {
     if (profileImage) {
       dispatch(setUserPhoto(profileImage.image));
