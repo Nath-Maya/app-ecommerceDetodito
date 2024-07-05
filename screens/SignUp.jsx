@@ -5,31 +5,36 @@ import { ROUTE } from '../navigation/Routes';
 import { useSignUpMutation } from '../service/authService';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import signUpSchema from '../validations/signUpSchema'
+import signUpSchema from '../validations/signUpSchema';
 
 
 export default function SignUp() {
 
-
     const { navigate } = useNavigation();
-    const [triggerSignUp, result] = useSignUpMutation()
+    const [signupError, setSignupError] = useState('');
+    const [triggerSignUp, { data: userCredential, error }] = useSignUpMutation();
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(signUpSchema)
     });
 
-
-    const handleSignUp = async (data) => {
-        const { email, password } = data;
+    const handleSignUp = async (formData) => {
         try {
-            await triggerSignUp({ email, password }).unwrap();
-            // Redireccionar a la pantalla de inicio de sesión después de registrarse
+            const { email, password } = formData;
+            const response = await triggerSignUp({ email, password });
+
+            if (response.error) {
+                throw new Error(response.error.data); 
+            }
+            console.log('userCredential:', userCredential);
             navigate(ROUTE.LOGIN);
         } catch (error) {
-            console.log(error);
+            console.error('Error durante el registro:', error.message);
+            setSignupError('Error durante el registro. Por favor, inténtalo de nuevo.');
         }
     };
-    
+
+
     return (
         <View style={styles.container}>
             <Controller
@@ -81,6 +86,8 @@ export default function SignUp() {
             />
             {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
 
+            {signupError ? <Text style={styles.errorText}>{signupError}</Text> : null}
+
             <TouchableOpacity style={styles.button} onPress={handleSubmit(handleSignUp)}>
                 <Text style={styles.buttonText}>Registrarse</Text>
             </TouchableOpacity>
@@ -113,7 +120,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#007bff', 
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center', 
         height: 40,
         borderRadius: 5,
         marginTop: 10,
@@ -135,5 +142,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 20
     },
+    errorText: {
+        color: 'red',
+        marginBottom: 10,
+    },
 });
-

@@ -16,7 +16,7 @@ export default function ImageSelector() {
   const [ triggerSaveProfileImage ] = usePostProfileImageMutation()
 
   const localId = useSelector(state => state.auth.value.user.localId)
-  console.log(localId);
+  console.log('localId: ' + localId);
 
   const verifyPermissions = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync()

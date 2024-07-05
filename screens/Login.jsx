@@ -5,14 +5,17 @@ import { ROUTE } from '../navigation/Routes';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { loginSchema } from '../validations/loginSchema';
 import { auth } from '../database/firebaseConfig';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../redux/auth/authSlice'; 
+import { loginSchema } from '../validations/loginSchema';
 
 
 export default function Login() {
-
+    
     const { navigate } = useNavigation();
-    const [ loginError, setLoginError ] = useState('');
+    const [loginError, setLoginError] = useState('');
+    const dispatch = useDispatch(); 
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema),
@@ -35,7 +38,9 @@ export default function Login() {
             const user = userCredential.user;
 
             if (user && user.email) {
-                console.log('\x1b[34m%s\x1b[0m',`Usuario ${user.email} ha iniciado sesión.`);
+                console.log('\x1b[34m%s\x1b[0m', `Usuario ${user.email} ha iniciado sesión.`);
+                dispatch(setUser({ email: user.email, localId: user.uid, token: user.stsTokenManager.accessToken }));
+
                 navigate(ROUTE.TAB_NAVIGATOR);
             } else {
                 console.warn("El usuario o el email es undefined.");
