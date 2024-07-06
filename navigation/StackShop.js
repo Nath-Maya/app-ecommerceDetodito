@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 export default function StackShop() {
   
   return (
-    <Stack.Navigator initialRouteName='Welcome'
+    <Stack.Navigator
       screenOptions={{
         headerShadowVisible: true,
         headerRight: () => <Logout/>
