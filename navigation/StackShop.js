@@ -4,6 +4,8 @@ import { ROUTE } from './Routes';
 import Home from '../screens/Home';
 import ItemListCategory from '../screens/ItemListCategory'
 import ItemDetail from '../screens/ItemDetail';
+import Logout from '../components/Logout';
+
 
 const Stack = createStackNavigator();
 
@@ -12,7 +14,8 @@ export default function StackShop() {
   return (
     <Stack.Navigator initialRouteName='Welcome'
       screenOptions={{
-        headerShadowVisible: false,
+        headerShadowVisible: true,
+        headerRight: () => <Logout/>
       }}
     >
         <Stack.Screen
