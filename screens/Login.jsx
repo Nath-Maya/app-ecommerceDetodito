@@ -60,8 +60,6 @@ export default function Login() {
                 await insertSession(userSession);
                 dispatch(setUser(userSession));
 
-                console.log(userSession);
-
                 navigate(ROUTE.TAB_NAVIGATOR);
             } else {
                 console.warn("El usuario o el email es undefined.");

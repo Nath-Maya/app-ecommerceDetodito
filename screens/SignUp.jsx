@@ -26,7 +26,6 @@ export default function SignUp() {
             if (response.error) {
                 throw new Error(response.error.data); 
             }
-            console.log('userCredential:', userCredential);
             navigate(ROUTE.LOGIN);
         } catch (error) {
             console.error('Error durante el registro:', error.message);
