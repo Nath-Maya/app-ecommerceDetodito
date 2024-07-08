@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ROUTE } from './Routes';
-import MyProfile from '../screens/MyProfile';
+import MyProfile from '../screens/myProfile'
 import ImageSelector from '../screens/ImageSelector';
 
 const Stack = createStackNavigator();

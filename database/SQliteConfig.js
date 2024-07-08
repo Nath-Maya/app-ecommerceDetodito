@@ -29,10 +29,6 @@ export const deleteSession = async () => {
 };
 
 export const fetchSession = async () => {
-  try {
-    const firstRow = await db.getAsync('SELECT * FROM sessions');
-    return firstRow.rows.length ? firstRow.rows.item(0) : null;
-  } catch (error) {
-    console.error('Error recuperando sesión:', error);
-  }
+  const firstRow = await db.getFirstAsync('SELECT * FROM sessions')
+  return firstRow
 };
