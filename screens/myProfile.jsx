@@ -13,7 +13,7 @@ export default function MyProfile() {
   const { data: profileImage } = useGetProfileImageQuery(user.localId);
   const dispatch = useDispatch();
 
-  //Gestion de imagen de perfil
+  
   useEffect(() => {
     if (profileImage) {
       dispatch(setUserPhoto(profileImage.image));
@@ -25,7 +25,7 @@ export default function MyProfile() {
   };
 
   return (
-    <View style={styles.myProfile}>
+    <View style={styles.MyProfile}>
       <Text style={styles.title}>Mi cuenta</Text>
       <Image
         source={
@@ -46,7 +46,7 @@ export default function MyProfile() {
 }
 
 const styles = StyleSheet.create({
-  myProfile: {
+  MyProfile: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

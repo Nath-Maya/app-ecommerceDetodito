@@ -23,7 +23,7 @@ export default function StackShop() {
             component={Home}
             options={{
               headerTitle: 'Tienda',
-              headerBackVisible: false,
+              headerShown : false,
             }}
         /> 
         <Stack.Screen
