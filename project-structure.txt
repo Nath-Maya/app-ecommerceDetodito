@@ -1,0 +1,96 @@
+.
+├── App.js
+├── LICENSE
+├── README.md
+├── app.json
+├── assets
+│   ├── adaptive-icon.png
+│   ├── favicon.png
+│   ├── icon.png
+│   ├── icons
+│   └── splash.png
+├── babel.config.js
+├── components
+│   ├── AddButton.jsx
+│   ├── CartItem.jsx
+│   ├── Categories.jsx
+│   ├── ItemCategory.jsx
+│   ├── ListCategory.jsx
+│   ├── Logout.jsx
+│   ├── NotFoundModal.jsx
+│   ├── OrderItem.jsx
+│   ├── ProductItem.jsx
+│   ├── ProductRating.jsx
+│   ├── QuantitySelector.jsx
+│   ├── RemoveButton.jsx
+│   ├── SearchInput.jsx
+│   └── TotalCart.jsx
+├── config
+│   └── theme.js
+├── data
+│   ├── cart.json
+│   ├── category.json
+│   ├── orders.json
+│   └── products.json
+├── database
+│   ├── SQliteConfig.js
+│   └── firebaseConfig.js
+├── icons
+│   ├── CartIcon.jsx
+│   ├── OrderIcon.jsx
+│   ├── ProfileIcon.jsx
+│   ├── SearchIcon.jsx
+│   ├── ShopIcon.jsx
+│   ├── logo
+│   │   └── logo-de-todito.png
+│   ├── logout
+│   │   └── salida.png
+│   ├── myProfile
+│   │   └── profile-image-placeholder-png.png
+│   └── screens-shot
+│       └── Captura de pantalla 2024-07-09 a la(s) 3.02.51 p.m..png
+├── navigation
+│   ├── MainNavigator.js
+│   ├── Routes.js
+│   ├── StackAuth.js
+│   ├── StackCart.js
+│   ├── StackMyProfile.js
+│   ├── StackOrders.js
+│   ├── StackShop.js
+│   ├── StackWelcome.js
+│   └── TabNavigator.js
+├── package-lock.json
+├── package.json
+├── project-structure.txt
+├── redux
+│   ├── auth
+│   │   └── authSlice.js
+│   ├── cart
+│   │   └── cartSlice.js
+│   └── shop
+│       └── shopSlice.js
+├── screens
+│   ├── Cart.jsx
+│   ├── Home.jsx
+│   ├── ImageSelector.jsx
+│   ├── ItemDetail.jsx
+│   ├── ItemListCategory.jsx
+│   ├── Login.jsx
+│   ├── MyProfile.jsx
+│   ├── Orders.jsx
+│   ├── SignUp.jsx
+│   └── Welcome.jsx
+├── service 
+│   ├── authService.js
+│   ├── shopService.js
+│   └── userService.js
+├── store
+│   └── store.js
+├── utils
+│   ├── formatDate.js
+│   └── formatPrice.js
+└── validations
+    ├── loginSchema.js
+    └── signUpSchema.js
+
+22 directories, 72 files
