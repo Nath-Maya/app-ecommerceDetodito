@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTE } from '../navigation/Routes';
 import { useForm, Controller } from 'react-hook-form';
@@ -11,6 +11,7 @@ import { setUser } from '../redux/auth/authSlice';
 import { loginSchema } from '../validations/loginSchema';
 import { useEffect } from 'react';
 import { insertSession, fetchSession, init } from '../database/SQliteConfig';
+import { Button, TextInput } from 'react-native-paper';
 
 
 export default function Login() {
@@ -78,19 +79,20 @@ export default function Login() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Ingresar</Text>
+            <Text style={styles.title}>Bienvenido !</Text>
             <Controller
                 control={control}
                 name="email"
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
                         style={styles.input}
-                        placeholder="Email"
+                        label="Email"
                         keyboardType="email-address"
                         autoCapitalize="none"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
+                        mode='outlined'
                     />
                 )}
             />
@@ -102,11 +104,12 @@ export default function Login() {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
                         style={styles.input}
-                        placeholder="Contraseña"
+                        label="Contraseña"
                         secureTextEntry
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
+                        mode='outlined'
                     />
                 )}
             />
@@ -114,12 +117,15 @@ export default function Login() {
 
             {loginError ? <Text style={styles.errorText}>{loginError}</Text> : null}
 
-            <TouchableOpacity style={styles.button} onPress={handleSubmit(handleLogin)}>
-                <Text style={styles.buttonText}>Ingresar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigate(ROUTE.SIGN_UP)}>
-                <Text style={styles.registerLink}>Registrarme</Text>
-            </TouchableOpacity>
+            <Button icon="login" mode='contained' onPress={handleLogin} style={styles.buttonText}>
+                Iniciar Sesión
+            </Button>
+            <View>
+                <Text>¿No eres un miembro?</Text>
+                <Button mode="text" onPress={() => navigate(ROUTE.SIGN_UP)} >
+                Regístrate ahora
+                </Button>
+            </View>
         </View>
     );
 }
@@ -135,36 +141,20 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 20,
-        color: '#333',
+        marginBottom: 40,
     },
     input: {
         height: 40,
-        width: '100%',
-        borderColor: '#ccc',
-        borderWidth: 1,
+        width: '90%',
         marginBottom: 10,
         paddingHorizontal: 10,
-        borderRadius: 5,
-    },
-    button: {
-        backgroundColor: '#007bff',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 40,
-        borderRadius: 5,
-        marginTop: 10,
     },
     buttonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
+        marginVertical: 35,
     },
     registerLink: {
         marginTop: 10,
-        fontSize: 16,
-        color: '#007bff',
+        fontSize: 20,
         fontWeight: 'bold',
     },
     errorText: {

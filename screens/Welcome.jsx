@@ -51,8 +51,8 @@ export default function Welcome() {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <Image source={require("../icons/logo/logo-de-todito.png")} style={styles.image} />
-      <Button icon="login" mode='elevated' onPress={handlePress} style={styles.button}>
-         Ingresar
+      <Button icon="arrow-right-bold" mode='elevated' onPress={handlePress} style={styles.button}>
+         Comenzar
       </Button>
     </SafeAreaView>
   );
