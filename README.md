@@ -23,12 +23,15 @@ Es una aplicación móvil de comercio electrónico que esta desarrollada para di
 
 ## 🛠️ Tecnologías & Lenguajes 
 
+### 🛠️ Frameworks:
 
 ### ![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 Framework para desarrollar aplicaciones móviles utilizando React. Permite construir aplicaciones para iOS y Android usando el mismo código base de JavaScript y React.
 
 ### ![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
 Facilita el desarrollo y la construcción de aplicaciones React Native. Ofrece una serie de APIs y servicios que aceleran el desarrollo y el despliegue de aplicaciones móviles.
+
+### 📚 Librerías:
 
 ### ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 Manejar el estado global de la aplicación de manera predecible y centralizada. Se utiliza para gestionar y compartir el estado entre los diferentes componentes de la aplicación.
@@ -37,7 +40,7 @@ Manejar el estado global de la aplicación de manera predecible y centralizada. 
 Autenticación de los usuarios registrados y base de datos en tiempo real de los productos, categorias, ordenes e imagenes de cada perfil de usuario. 
 
 ### ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-Manejo de la lógica de la aplicación y construir los componentes de React Native.
+Lenguaje de programación utilizado para manejar la lógica de la aplicación y construir los componentes de React Native.
 
 ### ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 En este proyecto, se utiliza para almacenar datos localmente en el dispositivo, para la persistencia de datos. 
