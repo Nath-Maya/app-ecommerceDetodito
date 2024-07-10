@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/auth/authSlice';
-import { theme } from '../config/theme';
 import { ROUTE } from '../navigation/Routes';
 import { init, fetchSession } from '../database/SQliteConfig';
 import { CommonActions } from '@react-navigation/native';
+import { useTheme } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 export default function Welcome() {
-    
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
+  const { colors } = useTheme();
 
   useEffect(() => {
     const checkSession = async () => {
@@ -45,31 +46,29 @@ export default function Welcome() {
     }
   };
 
+  const styles = createStyles(colors);
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <Image source={require("../icons/logo/logo-de-todito.png")} style={styles.image} />
-      <TouchableOpacity style={styles.button} onPress={handlePress} disabled={isLoading}>
-        <Text style={styles.buttonText}>Ingresar</Text>
-      </TouchableOpacity>
+      <Button icon="login" mode='elevated' onPress={handlePress} style={styles.button}>
+         Ingresar
+      </Button>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
+const createStyles = (colors) => StyleSheet.create({
   safeAreaView: {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
   },
   button: {
-    borderRadius: 15,
-    padding: 16,
     marginTop: 20,
-    borderWidth: 2,
-    backgroundColor: theme.colors.sky['500'],
   },
   buttonText: {
-    color: 'white',
+    color: colors.text,
     fontSize: 18,
     fontWeight: '900',
   },
