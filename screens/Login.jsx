@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTE } from '../navigation/Routes';
 import { useForm, Controller } from 'react-hook-form';
@@ -117,7 +117,7 @@ export default function Login() {
 
             {loginError ? <Text style={styles.errorText}>{loginError}</Text> : null}
 
-            <Button icon="login" mode='contained' onPress={handleLogin} style={styles.buttonText}>
+            <Button icon="login" mode='contained' onPress={handleSubmit(handleLogin)}  style={styles.buttonText}>
                 Iniciar Sesión
             </Button>
             <View>

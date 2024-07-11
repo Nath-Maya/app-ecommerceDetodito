@@ -18,7 +18,8 @@ export default function StackAuth() {
       <Stack.Screen
         name={ROUTE.SIGN_UP}
         component={SignUp}
-        options={{ title: 'Crear cuenta' }}
+        options={{  headerShown: false }}
+  
       />
     </Stack.Navigator>
   )
