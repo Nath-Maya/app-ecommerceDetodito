@@ -12,8 +12,7 @@ export default function Categories() {
   const { data, isLoading, error } = useGetCategoriesQuery()
   const dispatch = useDispatch()
   const navigation = useNavigation()
-
-  //Evento con el cual se activara el filtro por categorias
+  
   const handleCategoryPress = (category) => {
     dispatch(setCategorySelected(category));
     navigation.navigate('Categorías', {category})
@@ -50,7 +49,7 @@ export default function Categories() {
 
 const styles = StyleSheet.create({
   categoriesContainer: {
-    height: 70,
+    height: 40,
     justifyContent: "center",
     alignItems: "center",
   },

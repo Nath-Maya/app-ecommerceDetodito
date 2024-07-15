@@ -1,54 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { SafeAreaView, FlatList, StyleSheet } from 'react-native';
-import { useState, useEffect, useMemo } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useGetProductsByCategoryQuery } from '../service/shopService';
 import ProductItem from '../components/ProductItem';
-import SearchInput from '../components/SearchInput';
 import NotFoundModal from '../components/NotFoundModal';
-import Categories from '../components/Categories.jsx'
-
+import Categories from '../components/Categories.jsx';
+import { Searchbar } from 'react-native-paper';
 
 export default function ItemListCategory() {
-
-  // Filtrar productos tanto por selección de categoría en lista o por busqueda de texto
-  const filterProducts = (products = [], textToSearch, selectedCategory) => {
-
-    let filteredProducts = Array.isArray(products) ? products : [];
-
-    if (selectedCategory) {
-      filteredProducts = filteredProducts.filter(product => {
-        return product.category.toLowerCase() === selectedCategory.toLowerCase();
-      });
-
-    }
-
-    if (textToSearch) {
-      filteredProducts = filteredProducts.filter(product =>
-        product.title.toLowerCase().includes(textToSearch.toLowerCase())
-      );
-    }
-
-    return filteredProducts;
-  };
-
-  const [textToSearch, setTextToSearch] = useState(''); // Estado inicial para el texto que ingresa el usuario
-  const [modalVisible, setModalVisible] = useState(false); // Estado de visibilidad de modal con mensaje de producto encontrado o no encontrado
+  const [textToSearch, setTextToSearch] = useState(''); 
+  const [modalVisible, setModalVisible] = useState(false); 
   const navigation = useNavigation();
   const route = useRoute();
   const { category } = route.params;
-  const { data: productsObject = {} } = useGetProductsByCategoryQuery(category); // Asegúrate de que `products` no sea undefined
-  
-  // Convertir el objeto de productos en un arreglo
-  const products = Object.values(productsObject);
+  const { data: productsObject = {} } = useGetProductsByCategoryQuery(category);
 
-  // Filtrar productos basado en la categoría seleccionada y el texto de búsqueda
+  const products = useMemo(() => Object.values(productsObject), [productsObject]);
+
   const productsFiltered = useMemo(() => {
-    const result = filterProducts(products, textToSearch, category);
-    return result;
+    return products.filter(product => {
+      const title = product.title.toLowerCase();
+      const categoryMatch = product.category.toLowerCase() === category.toLowerCase();
+      const textMatch = textToSearch.toLowerCase() === '' || title.includes(textToSearch.toLowerCase());
+      return categoryMatch && textMatch;
+    });
   }, [products, textToSearch, category]);
 
-  // Efecto para mostrar modal si no se encuentran productos
+ 
   useEffect(() => {
     if (textToSearch !== '' && productsFiltered.length === 0) {
       setModalVisible(true);
@@ -63,9 +41,14 @@ export default function ItemListCategory() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SearchInput
+      <Searchbar
+        placeholder='Buscar producto...'
         onChangeText={setTextToSearch}
         value={textToSearch}
+        style={styles.searchBar}
+        mode='bar'
+        iconColor='gray'
+        searchAccessibilityLabel='Search'
       />
       <Categories/>
       <FlatList
@@ -90,5 +73,8 @@ export default function ItemListCategory() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  searchBar: {
+    margin: 8,
   },
 });

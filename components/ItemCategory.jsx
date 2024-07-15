@@ -6,7 +6,7 @@ import { Chip } from 'react-native-elements'
 export default function ItemCategory({name , onPress}) {
 
   return (
-  <Chip title={name} type='solid' onPress={onPress}/>
+  <Chip title={name} type='solid' onPress={onPress} />
   )
 }
 
