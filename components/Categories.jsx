@@ -49,13 +49,13 @@ export default function Categories() {
 }
 
 const styles = StyleSheet.create({
-    categoriesContainer: {
-        height: 60,
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      textError: {
-        color: "red",
-        fontSize: 20,
-      }
-})
+  categoriesContainer: {
+    height: 70,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textError: {
+    color: "red",
+    fontSize: 20,
+  },
+});

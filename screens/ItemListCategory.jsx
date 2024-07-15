@@ -6,6 +6,7 @@ import { useGetProductsByCategoryQuery } from '../service/shopService';
 import ProductItem from '../components/ProductItem';
 import SearchInput from '../components/SearchInput';
 import NotFoundModal from '../components/NotFoundModal';
+import Categories from '../components/Categories.jsx'
 
 
 export default function ItemListCategory() {
@@ -66,6 +67,7 @@ export default function ItemListCategory() {
         onChangeText={setTextToSearch}
         value={textToSearch}
       />
+      <Categories/>
       <FlatList
         data={productsFiltered}
         keyExtractor={(item) => item.id.toString()}
