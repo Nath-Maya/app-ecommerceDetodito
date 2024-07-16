@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Stars from 'react-native-stars'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { LightSheme } from '../theme/lightSheme.js';
 
 
 export default function ProductRating( { rating }) {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     ratingContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 8
+        marginBottom: 5,
       },
       star: {
         marginHorizontal: 2,
@@ -43,6 +44,6 @@ const styles = StyleSheet.create({
       ratingText: {
         marginLeft: 8,
         fontSize: 16,
-        color: '#888',
+        color: 'black',
       },
 })

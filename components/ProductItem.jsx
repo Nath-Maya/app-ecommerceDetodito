@@ -1,69 +1,66 @@
-import { View, Text, StyleSheet, Image, Pressable, useWindowDimensions } from 'react-native'
-import React from 'react'
-import ProductRating from './ProductRating';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+} from "react-native";
+import React from "react";
+import ProductRating from "./ProductRating";
+import { Card } from "react-native-elements";
+import { LightSheme } from "../theme/lightSheme.js";
 
-
-export default function ProductItem({title, price, image, onPress, rating}) {
-  
-  const { width } = useWindowDimensions();
-  const smallDevice = width < 350;
+export default function ProductItem({ title, price, image, onPress, rating }) {
 
   return (
-    <Pressable style={[styles.card, smallDevice && styles.cardSmall]} onPress={onPress}>
-      <View style={styles.descriptionContainer}>
-        <Text style={[styles.title, smallDevice && styles.titleSmall]}>{title}</Text>
-        <ProductRating rating={rating} />
-        <Text style={[styles.price, smallDevice && styles.priceSmall]}>${price.toFixed(2)}</Text>
-      </View>
-      <View style={styles.imageContainer}>
-        <Image style={[styles.image, smallDevice && styles.imageSmall]} source={{ uri: image }} />
-      </View>
+    <Pressable onPress={onPress} style={styles.pressable}>
+      <Card containerStyle={styles.card}>
+        <View style={styles.content}>
+          <View style={styles.descriptionContainer}>
+            <Card.Title style={styles.title}>{title}</Card.Title>
+            <ProductRating rating={rating} />
+            <Text style={styles.price}>${price.toFixed(2)}</Text>
+          </View>
+          <View style={styles.imageContainer}>
+            <Card.Image source={{ uri: image }} style={styles.image}/>
+          </View>
+        </View>
+      </Card>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    flexDirection: 'row', 
-    borderRadius: 8,
-    padding: 16,
-    margin: 8,
-    borderColor: 'black', 
-    borderWidth: 1, 
-    alignItems: 'center',
-    maxWidth: 480,
+  pressable: {
+    width: "100%",
   },
-  cardSmall: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+  card: {
+    marginBottom: 10,
+    backgroundColor: LightSheme.primaryContainer,
+  },
+  content: {
+    flexDirection: "row",
+  },
+  title: {
+    textAlign: 'left'
   },
   descriptionContainer: {
     flex: 1,
+    paddingRight: 10,
   },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 3,
+  imageContainer: {
+    width: 100,
+    height: 100,
+    overflow: "hidden",
+    borderRadius: 10,
   },
-  titleSmall: {
-    fontSize: 14,
+  image: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
   },
   price: {
     fontSize: 16,
-    color: '#888',
-  },
-  priceSmall: {
-    fontSize: 12,
-  },
-  imageContainer: {
-    paddingLeft: 16
-  },
-  image: {
-    width: 100, 
-    height: 100,
-  },
-  imageSmall: {
-    width: 80,
-    height: 80,
+    fontWeight: "bold",
+    marginTop: 5,
   },
 });
