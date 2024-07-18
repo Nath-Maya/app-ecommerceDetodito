@@ -8,11 +8,14 @@ import StackShop from './StackShop';
 import StackCart from './StackCart';
 import StackOrders from './StackOrders';
 import StackMyProfile from './StackMyProfile';
+import { useSelector } from 'react-redux';
 
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
+
+  const totalItems = useSelector(state => state.cart.totalItems);
   
   return (
     <Tab.Navigator
@@ -37,6 +40,7 @@ export default function TabNavigator() {
           tabBarIcon: () => (<CartIcon/>),
           headerShown: false,
           title: 'Mi Carrito',
+          tabBarBadge: totalItems > 0 ? totalItems : null,
         }}
       />
       <Tab.Screen
