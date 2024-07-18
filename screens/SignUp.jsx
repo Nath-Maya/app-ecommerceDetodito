@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { DarkTheme, useNavigation } from '@react-navigation/native';
 import { ROUTE } from '../navigation/Routes';
 import { useSignUpMutation } from '../service/authService';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import signUpSchema from '../validations/signUpSchema';
+import { Button, TextInput } from 'react-native-paper';
 
 
 export default function SignUp() {
@@ -36,17 +37,20 @@ export default function SignUp() {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.title}> Registrate aquí </Text>
+            <Text style={styles.subtitle}>Crea una cuenta para comenzar</Text>
             <Controller
                 control={control}
                 name="name"
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
                         style={styles.input}
-                        placeholder="Nombre"
+                        label='Nombre'
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
                         autoCapitalize="words"
+                        mode='outlined'
                     />
                 )}
             />
@@ -58,12 +62,13 @@ export default function SignUp() {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
                         style={styles.input}
-                        placeholder="Email"
+                        label="Email"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
                         keyboardType="email-address"
                         autoCapitalize="none"
+                        mode='outlined'
                     />
                 )}
             />
@@ -75,11 +80,12 @@ export default function SignUp() {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
                         style={styles.input}
-                        placeholder="Contraseña"
+                        label="Contraseña"
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
                         secureTextEntry
+                        mode='outlined'
                     />
                 )}
             />
@@ -87,10 +93,10 @@ export default function SignUp() {
 
             {signupError ? <Text style={styles.errorText}>{signupError}</Text> : null}
 
-            <TouchableOpacity style={styles.button} onPress={handleSubmit(handleSignUp)}>
-                <Text style={styles.buttonText}>Registrarse</Text>
-            </TouchableOpacity>
-            <Text style={styles.loginText}>¿Ya tienes cuenta?</Text>
+            <Button mode="contained-tonal" icon='account-arrow-right' onPress={handleSubmit(handleSignUp)} style={styles.button}>
+                Registrarse
+            </Button>
+            <Text style={styles.loginText}> ¿Ya tienes cuenta? </Text>
             <TouchableOpacity onPress={() => navigate(ROUTE.LOGIN)}>
                 <Text style={styles.loginLink}>Ingresar</Text>
             </TouchableOpacity>
@@ -106,24 +112,25 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         backgroundColor: '#fff', 
     },
+    title: {
+        fontSize: 30,
+        fontWeight: "bold",
+        marginBottom: 10
+    },
+    subtitle: {
+        color: 'gray',
+        marginBottom: 40
+    },
     input: {
         height: 40,
-        width: '100%',
-        borderColor: '#ccc',
-        borderWidth: 1,
+        width: '90%',
         marginBottom: 10,
         paddingHorizontal: 10,
-        borderRadius: 5, 
     },
     button: {
-        backgroundColor: '#007bff', 
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center', 
-        height: 40,
-        borderRadius: 5,
         marginTop: 10,
         marginBottom: 10, 
+        fontSize: 10,
     },
     buttonText: {
         color: '#fff', 
@@ -131,15 +138,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     loginText: {
-        marginBottom: 10, 
+        marginTop: 20,
         fontSize: 14,
-        color: '#333', 
+        color: DarkTheme.colors.outline, 
     },
     loginLink: {
         color: '#007bff', 
         fontSize: 16,
         fontWeight: 'bold',
-        marginTop: 20
+        marginTop: 10
     },
     errorText: {
         color: 'red',

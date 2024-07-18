@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     ratingContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 8
+        marginBottom: 5,
       },
       star: {
         marginHorizontal: 2,
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
       ratingText: {
         marginLeft: 8,
         fontSize: 16,
-        color: '#888',
+        color: 'black',
       },
 })

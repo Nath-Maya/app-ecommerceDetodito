@@ -2,7 +2,8 @@
 
 ![Repo Stats](https://github-readme-stats.vercel.app/api/pin/?username=Nath-Maya&repo=app-ecommerceDetodito)
 
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/Nath-Maya/app-ecommerceDetodito/main) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Nath-Maya/app-ecommerceDetodito/main) ![GitHub top language](https://img.shields.io/github/languages/top/Nath-Maya/app-ecommerceDetodito)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/Nath-Maya/app-ecommerceDetodito/main) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Nath-Maya/app-ecommerceDetodito/main) ![GitHub top language](https://img.shields.io/github/languages/top/Nath-Maya/app-ecommerceDetodito) ![GitHub repo size](https://img.shields.io/github/repo-size/Nath-Maya/app-ecommerceDetodito?color=red)
+
 
 
 Es una aplicación móvil de comercio electrónico que esta desarrollada para dispositivo android, construida con **React Native y Expo**. Con un flujo de procesos desde la creación de usuario hasta la generación de una orden, de acuerdo a los productos seleccionados. 

@@ -1,54 +1,62 @@
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
-import React from 'react'
-import AddButton from '../components/AddButton';
+import React from "react";
+import { ScrollView, StyleSheet, Text } from "react-native";
+import { Card } from "react-native-paper";
+import AddButton from "../components/AddButton";
 
-
-export default function ItemDetail( { route }) {
-
-  //Obtener los parametros del producto
+export default function ItemDetail({ route }) {
   const { product } = route.params;
 
-  console.log('\x1b[32m%s\x1b[0m', 'Detalles de producto: ' + product.title);
-
   return (
-    <ScrollView>
-      <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: product.image }} />
-      <Text style={styles.title}>{product.title}</Text>
-      <Text style={styles.description}>{product.description}</Text>
-      <Text style={styles.price}>${product.price.toFixed(2)}</Text>
-      <View>
-        <AddButton product={product}/>
-      </View>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Card style={styles.card}>
+        <Card.Content>
+          <Card.Cover source={{ uri: product.image }} style={styles.image} />
+          <Text style={styles.title}>{product.title}</Text>
+          <Text style={styles.subtitle}>{product.description}</Text>
+          <Text style={styles.price}>${product.price.toFixed(2)}</Text>
+        </Card.Content>
+        <AddButton product={product} />
+      </Card>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     padding: 16,
-    alignItems: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  card: {
+    width: "100%",
+    padding: 16,
+    alignItems: "center",
+    justifyContent: "center"
   },
   image: {
-    width: 200,
-    height: 200,
+    width: "100%",
+    height: 300,
+    resizeMode: "cover",
     marginBottom: 16,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 8,
   },
-  price: {
-    fontSize: 25,
-    fontWeight: "Bold",
-    color: '#888',
-    marginTop: 15,
-  },
-  description: {
+  subtitle: {
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: "center",
+    marginBottom: 12,
+  },
+  price: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#888",
+    textAlign: "center",
+    marginTop: 15,
   },
 });

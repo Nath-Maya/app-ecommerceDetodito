@@ -1,69 +1,59 @@
-import { View, Text, StyleSheet, Image, Pressable, useWindowDimensions } from 'react-native'
-import React from 'react'
-import ProductRating from './ProductRating';
+import React from "react";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Card, useTheme } from "react-native-paper";
+import ProductRating from "./ProductRating";
 
-
-export default function ProductItem({title, price, image, onPress, rating}) {
-  
-  const { width } = useWindowDimensions();
-  const smallDevice = width < 350;
+export default function ProductItem({ title, price, image, onPress, rating }) {
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   return (
-    <Pressable style={[styles.card, smallDevice && styles.cardSmall]} onPress={onPress}>
-      <View style={styles.descriptionContainer}>
-        <Text style={[styles.title, smallDevice && styles.titleSmall]}>{title}</Text>
-        <ProductRating rating={rating} />
-        <Text style={[styles.price, smallDevice && styles.priceSmall]}>${price.toFixed(2)}</Text>
-      </View>
-      <View style={styles.imageContainer}>
-        <Image style={[styles.image, smallDevice && styles.imageSmall]} source={{ uri: image }} />
-      </View>
+    <Pressable onPress={onPress} style={styles.pressable}>
+      <Card   style={styles.card}>
+        <Card.Content style={styles.content}>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.title}>{title}</Text>
+            <ProductRating rating={rating} />
+            <Text style={styles.price}>${price.toFixed(2)}</Text>
+          </View>
+          <Card.Cover source={{ uri: image }} style={styles.image} />
+        </Card.Content>
+      </Card>
     </Pressable>
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    flexDirection: 'row', 
-    borderRadius: 8,
-    padding: 16,
-    margin: 8,
-    borderColor: 'black', 
-    borderWidth: 1, 
-    alignItems: 'center',
-    maxWidth: 480,
-  },
-  cardSmall: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  descriptionContainer: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 3,
-  },
-  titleSmall: {
-    fontSize: 14,
-  },
-  price: {
-    fontSize: 16,
-    color: '#888',
-  },
-  priceSmall: {
-    fontSize: 12,
-  },
-  imageContainer: {
-    paddingLeft: 16
-  },
-  image: {
-    width: 100, 
-    height: 100,
-  },
-  imageSmall: {
-    width: 80,
-    height: 80,
-  },
-});
+const createStyles = (colors) =>
+  StyleSheet.create({
+    pressable: {
+      width: "98%",
+    },
+    card: {
+      marginVertical: 10,
+      backgroundColor: colors.secondaryContainer,
+    },
+    content: {
+      flexDirection: "row",
+    },
+    title: {
+      textAlign: "left",
+      fontSize: 18,
+      fontWeight: "bold",
+      marginBottom: 5,
+    },
+    descriptionContainer: {
+      flex: 1,
+      paddingHorizontal: 10,
+    },
+    image: {
+      width: 100,
+      height: 100,
+      borderRadius: 10,
+      resizeMode: "cover",
+    },
+    price: {
+      fontSize: 16,
+      fontWeight: "bold",
+      marginTop: 5,
+    },
+  });

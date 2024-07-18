@@ -1,44 +1,33 @@
-import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/cart/cartSlice';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import {  StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart/cartSlice";
+import { useNavigation } from "@react-navigation/native";
+import { Button } from "react-native-paper";
 
-
-export default function AddButton({product}) {
-  
+export default function AddButton({ product }) {
   const dispatch = useDispatch();
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
-    console.log("\x1b[34m%s\x1b[0m", "Producto agregado")
     navigation.goBack();
   };
 
   return (
-    <View style={styles.container}>
-      <Pressable style={styles.button} onPress={handleAddToCart}>
-        <Text style={styles.buttonText}>Agregar al carrito</Text>
-      </Pressable>
-    </View>
+      <Button 
+        icon="cart-arrow-down" 
+        mode="contained" 
+        onPress={handleAddToCart}
+        style={styles.button}
+      >
+        Agregar al carrito
+      </Button>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    marginTop: 16,
-  },
   button: {
-    backgroundColor: '#28a745',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
+    marginTop: 15
+  }
 });

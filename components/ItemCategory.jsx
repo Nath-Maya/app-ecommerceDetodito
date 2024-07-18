@@ -1,32 +1,40 @@
-import { Pressable, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import { StyleSheet } from 'react-native';
+import React from 'react';
+import { Chip, useTheme } from 'react-native-paper';
 
-
-export default function ItemCategory({name , onPress}) {
+export default function ItemCategory({ name, onPress, selected }) {
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   return (
-  <Pressable style={styles.category} onPress={onPress}>
-      <Text style={styles.name}>{name}</Text>
-  </Pressable>
-  )
+    <Chip
+      mode='outlined'
+      onPress={onPress}
+      selected={selected}
+      icon={selected ? 'check' : undefined}
+      textStyle={selected ? styles.selectedText : styles.text}
+      style={selected ? styles.selectedChip : styles.chip}
+    >
+      {name}
+    </Chip>
+  );
 }
 
-const styles = StyleSheet.create({
-    category: {
-        borderRadius: 15,
-        borderWidth: 1,
-        elevation: 5,
-        marginHorizontal: 3,
-        padding: 12,
-        shadowColor: "#000",
-        shadowOffset: { width: 2, height: 5 },
-        shadowOpacity: 0.3,
-        shadowRadius: 3,
-      },
-      name: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        textAlign: 'center',
-      },
-
-})
+const createStyles = (colors) =>
+  StyleSheet.create({
+    chip: {
+      margin: 4,
+      borderColor: colors.primary,
+    },
+    selectedChip: {
+      margin: 4,
+      backgroundColor: colors.onPrimaryContainer, 
+      borderColor: colors.onPrimaryContainer, 
+    },
+    text: {
+      color: colors.primary, 
+    },
+    selectedText: {
+      color: colors.onPrimary, 
+    },
+  });

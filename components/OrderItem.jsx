@@ -1,23 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { formatDate } from '../utils/formatDate'
-import { formatPrice } from '../utils/formatPrice'
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { formatDate } from '../utils/formatDate';
+import { formatPrice } from '../utils/formatPrice';
 
-
-export default function OrderItem({createdAt, totalPrice}) {
+export default function OrderItem({ createdAt, totalPrice }) {
+  const formattedDate = formatDate(createdAt);
+  const formattedPrice = formatPrice(totalPrice);
 
   return (
     <View style={styles.orderItem}>
-        <Text>{formatDate(createdAt)}</Text>
-        <Text>{formatPrice(totalPrice)}</Text>
+      <Text>{formattedDate}</Text>
+      <Text style={styles.price}>{formattedPrice}</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-    orderItem: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 16,
-      },
-})
+  orderItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 16,
+  },
+  price: {
+    color: 'blue',
+    fontWeight: 'bold'
+  }
+});

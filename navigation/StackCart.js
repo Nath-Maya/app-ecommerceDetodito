@@ -18,7 +18,7 @@ export default function StackCart() {
             name={ROUTE.CART}
             component={Cart}
             options={{
-              headerTitle: 'Carrito',
+              headerTitle: 'Mi Carrito',
             }}
         /> 
     </Stack.Navigator>
