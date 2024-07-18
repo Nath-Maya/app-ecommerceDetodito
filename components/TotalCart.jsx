@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { getTotalItems, getTotalPrice } from '../redux/cart/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { usePostOrderMutation } from '../service/shopService'
+import { Button, useTheme } from 'react-native-paper';
+
 
 
 export default function TotalCart() {
@@ -13,12 +15,13 @@ export default function TotalCart() {
   const totalPrice = useSelector(state => state.cart.totalPrice);
   const items = useSelector(state => state.cart.items)
   const user = useSelector(state => state.cart.user)
+  const { colors } = useTheme()
+  const styles = createStyles(colors);
 
   
   useEffect(() => {
     dispatch(getTotalItems());
     dispatch(getTotalPrice());
-    console.log('Total: $' + totalPrice + "- Total productos: " + totalItems);
   }, [items,dispatch])
 
   const cartIsEmpty = items.length === 0
@@ -34,43 +37,37 @@ const [triggerPost, result] = usePostOrderMutation()
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Total Items: {totalItems}</Text>
-      <Text style={styles.text}>Total Price: ${totalPrice}</Text>
-      <View style={styles.containerButton}>
-        {cartIsEmpty ? null : (
-          <Pressable style={styles.button} onPress={confirmOrder}>
-            <Text style={styles.buttonText}>Confirmar Pedido</Text>
-          </Pressable>
-        )}
+      <View style={styles.detailOrder}>
+        <Text style={styles.text}>Total Items: {totalItems}</Text>
+        <Text style={styles.text}>Total Price: ${totalPrice}</Text>
       </View>
+      {cartIsEmpty ? null : (
+        <Button icon="text-box-check" onPress={confirmOrder} mode="elevated">
+          Confirmar pedido
+        </Button>
+      )}
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({
+const createStyles = (colors) =>  StyleSheet.create({
     container: {
-        paddingVertical: 16,
-        borderTopWidth: 1,
+        paddingVertical: 10,
         borderTopColor: '#ccc',
         alignItems: 'center',
+        backgroundColor: colors.onSecondaryContainer,
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        borderRadius: 10
+      },
+      detailOrder: {
+        flexDirection: 'row',
+        marginBottom: 15
       },
       text: {
         fontSize: 18,
         fontWeight: 'bold',
-      },
-      containerButton: {
-        alignItems: 'center',
-        marginTop: 16,
-      },
-      button: {
-        backgroundColor: 'green',
-        paddingVertical: 8,
-        paddingHorizontal: 15,
-        borderRadius: 10,
-      },
-      buttonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
+        paddingHorizontal: 10,
+        color: 'white'
       },
 })

@@ -1,21 +1,21 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
-import React from 'react';
-import RemoveButton from './RemoveButton';
-import QuantitySelector from './QuantitySelector'
+import { StyleSheet, Text, View, Image } from "react-native";
+import React from "react";
+import RemoveButton from "./IconRemove";
+import QuantitySelector from "./QuantitySelector";
 
 
-export default function CartItem({ id, image, title, category, price }) {
+export default function CartItem({ id, image, title, price }) {
 
+  
   return (
     <View style={styles.card}>
       <Image style={styles.image} source={{ uri: image }} />
       <View style={styles.details}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{category}</Text>
         <Text style={styles.price}>${price}</Text>
         <View style={styles.containerCtrl}>
-          <RemoveButton id={id} />
-          <QuantitySelector id={id}/>
+          <QuantitySelector id={id} />
+          <RemoveButton style={styles.iconRemove} id={id} />
         </View>
       </View>
     </View>
@@ -24,44 +24,46 @@ export default function CartItem({ id, image, title, category, price }) {
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: 'row',
-    padding: 16,
-    margin: 8,
-    borderRadius: 8,
-    backgroundColor: 'white',
-    shadowColor: '#000',
+    flexDirection: "row",
+    justifyContent: "space-between", 
+    alignItems: "center",
+    padding: 8,
+    margin: 7,
+    borderRadius: 10,
+    backgroundColor: "white",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-    borderColor: '#ddd',
+    borderColor: "#ddd",
     borderWidth: 1,
   },
   image: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
-    marginRight: 16,
+    width: '30%', 
+    height: '100%',
+    borderRadius: 5,
+    marginRight: 12,
   },
   details: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  description: {
-    fontSize: 14,
-    color: '#555',
-    marginVertical: 4,
+    fontSize: 16,
+    fontWeight: "bold",
   },
   price: {
-    fontSize: 16,
-    color: '#888',
-    marginTop: 8,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#888",
+    marginTop: 10,
+  },
+  iconRemove: {
+    alignSelf: 'baseline',
   },
   containerCtrl: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });

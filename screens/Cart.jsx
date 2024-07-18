@@ -4,10 +4,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import TotalCart from '../components/TotalCart';
 import CartItem from '../components/CartItem';
+import { useTheme } from 'react-native-paper';
 
 
 export default function Cart() {
 
+  const { colors } = useTheme()
+  const styles = createStyles(colors);
   
   const items = useSelector((state) => state.cart.items);
 
@@ -28,10 +31,11 @@ export default function Cart() {
   );
 }
 
-const styles = StyleSheet.create({
+const createStyles = (colors) => StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 10,
+    backgroundColor: colors.secondaryContainer
   },
   list: {
     flexGrow: 1,

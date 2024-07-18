@@ -14,9 +14,8 @@ export default function RemoveButton({ id }) {
     <IconButton
       icon="delete-circle"
       iconColor="red"
-      size={40}
+      size={35}
       onPress={handleRemove}
-      mode="contained"
       accessibilityLabel="Delete product"
     />
   );

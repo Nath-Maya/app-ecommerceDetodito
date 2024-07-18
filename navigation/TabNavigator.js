@@ -36,7 +36,7 @@ export default function TabNavigator() {
         options={{
           tabBarIcon: () => (<CartIcon/>),
           headerShown: false,
-          title: 'Carrito',
+          title: 'Mi Carrito',
         }}
       />
       <Tab.Screen
