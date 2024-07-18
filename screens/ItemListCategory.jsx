@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     flex: 1,
+    justifyContent: 'center',
   },
   searchBar: {
     margin: 8,

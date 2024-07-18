@@ -1,69 +1,59 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-} from "react-native";
 import React from "react";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Card, useTheme } from "react-native-paper";
 import ProductRating from "./ProductRating";
-import { Card } from "react-native-elements";
-import { useTheme } from "react-native-paper";
 
 export default function ProductItem({ title, price, image, onPress, rating }) {
-
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
   return (
     <Pressable onPress={onPress} style={styles.pressable}>
-      <Card containerStyle={styles.card}>
-        <View style={styles.content}>
+      <Card   style={styles.card}>
+        <Card.Content style={styles.content}>
           <View style={styles.descriptionContainer}>
-            <Card.Title style={styles.title}>{title}</Card.Title>
+            <Text style={styles.title}>{title}</Text>
             <ProductRating rating={rating} />
             <Text style={styles.price}>${price.toFixed(2)}</Text>
           </View>
-          <View style={styles.imageContainer}>
-            <Card.Image source={{ uri: image }} style={styles.image}/>
-          </View>
-        </View>
+          <Card.Cover source={{ uri: image }} style={styles.image} />
+        </Card.Content>
       </Card>
     </Pressable>
   );
 }
 
-const createStyles = (colors) => StyleSheet.create({
-  pressable: {
-    width: "100%",
-  },
-  card: {
-    marginBottom: 10,
-    backgroundColor: colors.secondaryContainer,
-  },
-  content: {
-    flexDirection: "row",
-  },
-  title: {
-    textAlign: 'left'
-  },
-  descriptionContainer: {
-    flex: 1,
-    paddingRight: 10,
-  },
-  imageContainer: {
-    width: 100,
-    height: 100,
-    overflow: "hidden",
-    borderRadius: 10,
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
-  },
-  price: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginTop: 5,
-  },
-});
+const createStyles = (colors) =>
+  StyleSheet.create({
+    pressable: {
+      width: "98%",
+    },
+    card: {
+      marginVertical: 10,
+      backgroundColor: colors.secondaryContainer,
+    },
+    content: {
+      flexDirection: "row",
+    },
+    title: {
+      textAlign: "left",
+      fontSize: 18,
+      fontWeight: "bold",
+      marginBottom: 5,
+    },
+    descriptionContainer: {
+      flex: 1,
+      paddingHorizontal: 10,
+    },
+    image: {
+      width: 100,
+      height: 100,
+      borderRadius: 10,
+      resizeMode: "cover",
+    },
+    price: {
+      fontSize: 16,
+      fontWeight: "bold",
+      marginTop: 5,
+    },
+  });
