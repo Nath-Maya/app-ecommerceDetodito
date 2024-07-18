@@ -15,15 +15,13 @@ export default function Orders() {
     return <Text>Error loading orders</Text>;
   }
 
-  console.log("Orders object from Firebase:", ordersObject);
-  console.log("Converted orders array:", orders);
 
   return (
     <View style={styles.orders}>
       <FlatList
         contentContainerStyle={styles.list}
         data={orders}
-        keyExtractor={(item) => item.id ? item.id.toString() : 'unknown'} 
+        keyExtractor={(item) => item.id} 
         renderItem={({ item }) => (
           <OrderItem 
             createdAt={item.date || 'Fecha no disponible'} 

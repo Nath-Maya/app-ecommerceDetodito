@@ -10,7 +10,7 @@ export default function OrderItem({ createdAt, totalPrice }) {
   return (
     <View style={styles.orderItem}>
       <Text>{formattedDate}</Text>
-      <Text>{formattedPrice}</Text>
+      <Text style={styles.price}>{formattedPrice}</Text>
     </View>
   );
 }
@@ -21,4 +21,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 16,
   },
+  price: {
+    color: 'blue',
+    fontWeight: 'bold'
+  }
 });
