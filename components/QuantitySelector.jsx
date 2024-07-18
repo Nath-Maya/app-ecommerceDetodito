@@ -1,7 +1,8 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { incrementQuantity, decrementQuantity } from '../redux/cart/cartSlice'
+import { IconButton } from 'react-native-paper'
 
 
 export default function QuantitySelector({ id }) {
@@ -19,9 +20,17 @@ export default function QuantitySelector({ id }) {
 
   return (
     <View style={styles.container}>
-      <Button title="-" onPress={handleDecrement} />
-        <Text>{item.quantity}</Text>
-      <Button title="+" onPress={handleIncrement} />
+      <IconButton 
+        icon="minus-circle-outline" 
+        onPress={handleDecrement}
+        accessibilityLabel='Increment product'
+      />
+        <Text style={styles.quantityText}>{item.quantity}</Text>
+      <IconButton 
+        icon='plus-circle-outline' 
+        onPress={handleIncrement} 
+        accessibilityLabel='decrement product'
+      />
     </View>
   );
 }
@@ -30,23 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    marginTop: 10
-  },
-  button: {
-    backgroundColor: '#007bff',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 20,
+    padding: 3,
   },
   quantityText: {
     fontSize: 18,

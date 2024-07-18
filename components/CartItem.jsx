@@ -13,7 +13,7 @@ export default function CartItem({ id, image, title, category, price }) {
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{category}</Text>
         <Text style={styles.price}>${price}</Text>
-        <View>
+        <View style={styles.containerCtrl}>
           <RemoveButton id={id} />
           <QuantitySelector id={id}/>
         </View>
@@ -61,4 +61,7 @@ const styles = StyleSheet.create({
     color: '#888',
     marginTop: 8,
   },
+  containerCtrl: {
+    flexDirection: 'row'
+  }
 });
