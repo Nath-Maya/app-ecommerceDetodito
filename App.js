@@ -4,8 +4,8 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 import { init } from './database/SQliteConfig';
 import { MD2DarkTheme, MD3LightTheme, PaperProvider } from 'react-native-paper';
-import { LightSheme as ImportedLightSheme } from './theme/lightSheme';
-import { DarkSheme as ImportedDarkSheme } from './theme/darkSheme';
+import { LightScheme as ImportedLightScheme } from './theme/lightScheme.js';
+import { DarkScheme as ImportedDarkScheme } from './theme/darkScheme.js';
 import { useColorScheme } from 'react-native';
 
 // Inicializar la base de datos
@@ -16,12 +16,12 @@ init()
 // Definir temas personalizados
 const LightTheme = {
   ...MD3LightTheme,
-  colors: ImportedLightSheme,
+  colors: ImportedLightScheme,
 };
 
 const DarkTheme = {
   ...MD2DarkTheme,
-  colors: ImportedDarkSheme,
+  colors: ImportedDarkScheme,
 };
 
 export default function App() {

@@ -72,6 +72,7 @@ export default function ItemListCategory() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
     flex: 1,
   },
   searchBar: {

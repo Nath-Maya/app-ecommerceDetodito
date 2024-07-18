@@ -2,7 +2,6 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Stars from 'react-native-stars'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { LightSheme } from '../theme/lightSheme.js';
 
 
 export default function ProductRating( { rating }) {

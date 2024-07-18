@@ -1,4 +1,4 @@
-export const LightSheme = {
+export const LightScheme = {
     "primary": "rgb(0, 88, 203)",
     "onPrimary": "rgb(255, 255, 255)",
     "primaryContainer": "rgb(217, 226, 255)",

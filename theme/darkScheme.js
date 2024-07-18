@@ -1,4 +1,4 @@
-export const DarkSheme = {
+export const DarkScheme = {
     "primary": "rgb(176, 198, 255)",
     "onPrimary": "rgb(0, 45, 111)",
     "primaryContainer": "rgb(0, 66, 156)",

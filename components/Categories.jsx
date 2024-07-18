@@ -1,5 +1,5 @@
 import { StyleSheet, FlatList, View, ActivityIndicator, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setCategorySelected } from '../redux/shop/shopSlice'
 import { useNavigation } from '@react-navigation/native'
@@ -12,8 +12,12 @@ export default function Categories() {
   const { data, isLoading, error } = useGetCategoriesQuery()
   const dispatch = useDispatch()
   const navigation = useNavigation()
+  const [ selectedCategory, setSelectedCategory ] = useState(null)
+
+
   
   const handleCategoryPress = (category) => {
+    setSelectedCategory(category)
     dispatch(setCategorySelected(category));
     navigation.navigate('Categorías', {category})
   };
@@ -38,7 +42,9 @@ export default function Categories() {
       <FlatList
         data={data}
         renderItem={({ item }) => 
-          <ItemCategory name={item} onPress={() => handleCategoryPress(item)} />}
+          <ItemCategory name={item} onPress={() => handleCategoryPress(item)}
+          selected = {item === selectedCategory}
+        />}
         keyExtractor={(item, index) => index.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}

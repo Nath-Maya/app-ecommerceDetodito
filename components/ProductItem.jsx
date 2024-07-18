@@ -7,9 +7,12 @@ import {
 import React from "react";
 import ProductRating from "./ProductRating";
 import { Card } from "react-native-elements";
-import { LightSheme } from "../theme/lightSheme.js";
+import { useTheme } from "react-native-paper";
 
 export default function ProductItem({ title, price, image, onPress, rating }) {
+
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   return (
     <Pressable onPress={onPress} style={styles.pressable}>
@@ -29,13 +32,13 @@ export default function ProductItem({ title, price, image, onPress, rating }) {
   );
 }
 
-const styles = StyleSheet.create({
+const createStyles = (colors) => StyleSheet.create({
   pressable: {
     width: "100%",
   },
   card: {
     marginBottom: 10,
-    backgroundColor: LightSheme.primaryContainer,
+    backgroundColor: colors.secondaryContainer,
   },
   content: {
     flexDirection: "row",
