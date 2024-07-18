@@ -1,22 +1,42 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native'
-import React from 'react'
-import OrderItem from '../components/OrderItem'
-import orderData from "../data/orders.json"
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React from 'react';
+import OrderItem from '../components/OrderItem';
+import { useGetOrderQuery } from '../service/shopService.js';
 
 export default function Orders() {
+  const { data: ordersObject = {}, isLoading, isError } = useGetOrderQuery();
+  const orders = ordersObject ? Object.values(ordersObject) : [];
+
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+
+  if (isError) {
+    return <Text>Error loading orders</Text>;
+  }
+
+  console.log("Orders object from Firebase:", ordersObject);
+  console.log("Converted orders array:", orders);
+
   return (
     <View style={styles.orders}>
       <FlatList
         contentContainerStyle={styles.list}
-        data={orderData}
-        renderItem={({ item }) => <OrderItem {...item} />}
+        data={orders}
+        keyExtractor={(item) => item.id ? item.id.toString() : 'unknown'} 
+        renderItem={({ item }) => (
+          <OrderItem 
+            createdAt={item.date || 'Fecha no disponible'} 
+            totalPrice={item.totalPrice !== undefined ? item.totalPrice : 0} 
+          />
+        )}
         ListEmptyComponent={<Text>No orders</Text>}
       />
     </View>
-  )
+  );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   orders: {
     backgroundColor: 'white',
     minHeight: '100%',
@@ -24,4 +44,4 @@ export const styles = StyleSheet.create({
   list: {
     gap: 32,
   },
-})
+});

@@ -18,9 +18,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
                 method: "POST",
                 body: order,
             })
+        }),
+        getOrder: builder.query({
+            query: () => 'orders.json',
         })
     })
  })
  
  //Crear hooks para utilizarlos
- export const { useGetProductsByCategoryQuery, useGetCategoriesQuery, usePostOrderMutation } = shopApi
+ export const { useGetProductsByCategoryQuery, useGetCategoriesQuery, usePostOrderMutation, useGetOrderQuery } = shopApi

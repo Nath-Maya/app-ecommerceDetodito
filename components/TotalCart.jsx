@@ -6,34 +6,36 @@ import { useEffect } from 'react';
 import { usePostOrderMutation } from '../service/shopService'
 import { Button, useTheme } from 'react-native-paper';
 
-
-
 export default function TotalCart() {
 
   const dispatch = useDispatch();
   const totalItems = useSelector(state => state.cart.totalItems);
   const totalPrice = useSelector(state => state.cart.totalPrice);
-  const items = useSelector(state => state.cart.items)
-  const user = useSelector(state => state.cart.user)
-  const { colors } = useTheme()
+  const items = useSelector(state => state.cart.items);
+  const user = useSelector(state => state.cart.user);
+  const { colors } = useTheme();
   const styles = createStyles(colors);
 
-  
   useEffect(() => {
     dispatch(getTotalItems());
     dispatch(getTotalPrice());
-  }, [items,dispatch])
+  }, [items, dispatch]);
 
-  const cartIsEmpty = items.length === 0
+  const cartIsEmpty = items.length === 0;
   
+  const [triggerPost, result] = usePostOrderMutation();
 
-const [triggerPost, result] = usePostOrderMutation()
-
-  const confirmOrder = () => {
-    triggerPost({ items, totalPrice, user})
-    console.log("Confirmar pedido");
+  const confirmOrder = async() => {
+    try {
+      if (user) {
+        const order = {items, totalItems, totalPrice, date: new Date().toISOString()};
+        await triggerPost(order).unwrap();
+        console.log("Confirmar pedido");
+      } 
+    } catch (error) {
+      console.log("Error al confirmar el pedido", error);
+    }
   }
-
 
   return (
     <View style={styles.container}>
@@ -70,4 +72,4 @@ const createStyles = (colors) =>  StyleSheet.create({
         paddingHorizontal: 10,
         color: 'white'
       },
-})
+});
