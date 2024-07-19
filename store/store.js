@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from '../redux/cart/cartSlice';
 import shopReducer from '../redux/shop/shopSlice';
 import authReducer from '../redux/auth/authSlice'
+import orderReducer from '../redux/order/orderSlice.js'
 import { shopApi } from '../service/shopService';
 import { authApi } from '../service/authService';
 import { userApi } from '../service/userService';
@@ -14,6 +15,7 @@ const store = configureStore({
     auth: authReducer,
     cart: cartReducer,
     shop: shopReducer,
+    orders: orderReducer,
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,

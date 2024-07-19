@@ -16,6 +16,8 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
 
   const totalItems = useSelector(state => state.cart.totalItems);
+  const totalOrders = useSelector(state => state.orders.totalOrders);
+
   
   return (
     <Tab.Navigator
@@ -50,6 +52,7 @@ export default function TabNavigator() {
           tabBarIcon: () => (<OrderIcon/>),
           title: 'Ordenes',
           headerShown: false,
+          tabBarBadge: totalOrders > 0 ? totalOrders : null,
         }}
       />
       <Tab.Screen
