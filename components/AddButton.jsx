@@ -17,8 +17,8 @@ export default function AddButton({ product }) {
       type: 'success',
       text1: '✅ Producto agregado',
       text2: 'El producto se ha añadido al carrito',
-      position: 'bottom',
-      bottomOffset: 100
+      position: 'top',
+      topOffset: 100
     });
   };
 
