@@ -13,8 +13,6 @@ export default function Categories() {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const [ selectedCategory, setSelectedCategory ] = useState(null)
-
- console.log(data)
   
   const handleCategoryPress = (category) => {
     setSelectedCategory(category)

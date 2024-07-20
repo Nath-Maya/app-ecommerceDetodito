@@ -1,6 +1,5 @@
 import { StyleSheet, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import products from '../data/products.json'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 
