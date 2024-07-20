@@ -7,6 +7,8 @@ import { MD2DarkTheme, MD3LightTheme, PaperProvider } from 'react-native-paper';
 import { LightScheme as ImportedLightScheme } from './theme/lightScheme.js';
 import { DarkScheme as ImportedDarkScheme } from './theme/darkScheme.js';
 import { useColorScheme } from 'react-native';
+import Toast from 'react-native-toast-message';
+
 
 // Inicializar la base de datos
 init()
@@ -35,6 +37,7 @@ export default function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <MainNavigator />
+        <Toast/>
       </PaperProvider>
     </Provider>
   );

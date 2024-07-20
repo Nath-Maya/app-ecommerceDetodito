@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cart/cartSlice";
 import { useNavigation } from "@react-navigation/native";
 import { Button } from "react-native-paper";
+import Toast from "react-native-toast-message";
 
 export default function AddButton({ product }) {
   const dispatch = useDispatch();
@@ -12,6 +13,13 @@ export default function AddButton({ product }) {
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     navigation.goBack();
+    Toast.show({
+      type: 'success',
+      text1: '✅ Producto agregado',
+      text2: 'El producto se ha añadido al carrito',
+      position: 'bottom',
+      bottomOffset: 100
+    });
   };
 
   return (
