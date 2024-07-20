@@ -39,6 +39,8 @@ export default function ItemListCategory() {
     navigation.navigate('Detalle', { product: item });
   };
 
+  console.log(productsFiltered)
+
   return (
     <SafeAreaView style={styles.container}>
       <Searchbar

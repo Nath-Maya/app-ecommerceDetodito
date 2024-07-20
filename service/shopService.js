@@ -24,6 +24,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
         })
     })
  })
+
  
  //Crear hooks para utilizarlos
  export const { useGetProductsByCategoryQuery, useGetCategoriesQuery, usePostOrderMutation, useGetOrderQuery } = shopApi
