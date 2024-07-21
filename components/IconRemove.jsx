@@ -14,7 +14,7 @@ export default function RemoveButton({ id }) {
       text1: '❌  Producto eliminado',
       text2: 'El producto se ha eliminado de elcarrito',
       position: 'top',
-      topOffset: 100
+      topOffset: 95
     });
   };
 

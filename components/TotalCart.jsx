@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { usePostOrderMutation } from '../service/shopService'
 import { Button, useTheme } from 'react-native-paper';
+import Toast from 'react-native-toast-message';
 
 export default function TotalCart() {
 
@@ -30,6 +31,13 @@ export default function TotalCart() {
       if (user) {
         const order = {items, totalItems, totalPrice, date: new Date().toISOString()};
         await triggerPost(order).unwrap();
+        Toast.show({
+          type: 'info',
+          text1: 'Pedido Confirmado',
+          text2: 'Se ha generado su Orden',
+          position: 'top',
+          topOffset: 95
+        });
         console.log("Confirmar pedido");
       } 
     } catch (error) {
