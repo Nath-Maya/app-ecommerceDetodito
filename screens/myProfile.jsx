@@ -3,7 +3,8 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetProfileImageQuery } from '../service/userService';
-import { setProfilePicture, setUserPhoto } from '../redux/auth/authSlice';
+import {  setUserPhoto } from '../redux/auth/authSlice';
+import { Button } from 'react-native-paper';
 
 export default function MyProfile() {
 
@@ -13,7 +14,7 @@ export default function MyProfile() {
   const { data: profileImage } = useGetProfileImageQuery(user.localId);
   const dispatch = useDispatch();
 
-  
+
   useEffect(() => {
     if (profileImage) {
       dispatch(setUserPhoto(profileImage.image));
@@ -25,8 +26,8 @@ export default function MyProfile() {
   };
 
   return (
-    <View style={styles.MyProfile}>
-      <Text style={styles.title}>Mi cuenta</Text>
+    <View style={styles.myProfile}>
+      <Text style={styles.title}>{user.email}</Text>
       <Image
         source={
           profilePicture
@@ -38,15 +39,15 @@ export default function MyProfile() {
         resizeMode='cover'
         style={styles.image}
       />
-      <TouchableOpacity style={styles.button} onPress={handleAddPhoto}>
-        <Text style={styles.buttonText}>Agregar foto de perfil</Text>
-      </TouchableOpacity>
+      <Button icon="camera" mode="contained-tonal" title="Agregar foto de perfil" onPress={handleAddPhoto}>
+        Agregar foto de perfil
+      </Button>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  MyProfile: {
+  myProfile: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -54,26 +55,14 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: 25,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 20,
   },
   image: {
-    width: 160,
-    height: 160,
-    borderRadius: 80,
+    width: 180,
+    height: 180,
+    borderRadius: 50,
     marginBottom: 32,
-  },
-  button: {
-    backgroundColor: '#007bff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    marginBottom: 16,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
   },
 });

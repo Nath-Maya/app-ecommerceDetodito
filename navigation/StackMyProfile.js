@@ -17,7 +17,7 @@ export default function StackMyProfile() {
       <Stack.Screen
         name={ROUTE.MY_PROFILE}
         component={MyProfile}
-        options={{ headerTitle: 'Perfil' }}
+        options={{ headerTitle: 'Mi Perfil' }}
       />
       <Stack.Screen
         name={ROUTE.IMAGE_SELECTOR}
