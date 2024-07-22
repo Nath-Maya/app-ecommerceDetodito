@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, Alert } from "react-native";
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import { launchImageLibraryAsync } from "expo-image-picker";
+import { launchCameraAsync } from "expo-image-picker"; // Cambiado a launchCameraAsync
 import { useDispatch, useSelector } from "react-redux";
 import { setProfilePicture } from "../redux/auth/authSlice";
 import { useNavigation } from "@react-navigation/native";
@@ -33,7 +33,7 @@ export default function ImageSelector() {
     const hasPermission = await verifyPermissions();
     if (!hasPermission) return;
 
-    const image = await launchImageLibraryAsync({
+    const image = await launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [1, 1],
@@ -74,7 +74,7 @@ export default function ImageSelector() {
         <>
           <Text style={styles.noImageText}>No hay foto para mostrar...</Text>
           <Chip mode="outlined" icon="camera-burst" onPress={pickImage}>
-            Seleccionar foto
+            Tomar foto
           </Chip>
         </>
       )}
