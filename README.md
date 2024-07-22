@@ -129,7 +129,7 @@ Seleccionar la opcion **a** para ejecutar el simulador android.
 │   ├── Routes.js
 │   ├── StackAuth.js
 │   ├── StackCart.js
-│   ├── StackMyProfile.js
+│   ├── StackProfile.js
 │   ├── StackOrders.js
 │   ├── StackShop.js
 │   ├── StackWelcome.js

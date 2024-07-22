@@ -7,7 +7,7 @@ import { ProfileIcon } from '../icons/ProfileIcon'
 import StackShop from './StackShop';
 import StackCart from './StackCart';
 import StackOrders from './StackOrders';
-import StackMyProfile from './StackMyProfile';
+import StackProfile from './StackProfile.js';
 import { useSelector } from 'react-redux';
 
 
@@ -57,7 +57,7 @@ export default function TabNavigator() {
       />
       <Tab.Screen
         name='Perfil'     
-        component={StackMyProfile}
+        component={StackProfile}
         options={{
           tabBarIcon: () => (<ProfileIcon/>),
           title: 'Mi Perfil',

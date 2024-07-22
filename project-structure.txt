@@ -45,7 +45,7 @@
 │   │   └── logo-de-todito.png
 │   ├── logout
 │   │   └── salida.png
-│   ├── myProfile
+│   ├── MyProfile
 │   │   └── profile-image-placeholder-png.png
 │   └── screens-shot
 │       └── Captura de pantalla 2024-07-09 a la(s) 3.02.51 p.m..png
@@ -54,7 +54,7 @@
 │   ├── Routes.js
 │   ├── StackAuth.js
 │   ├── StackCart.js
-│   ├── StackMyProfile.js
+│   ├── StackProfile.js
 │   ├── StackOrders.js
 │   ├── StackShop.js
 │   ├── StackWelcome.js

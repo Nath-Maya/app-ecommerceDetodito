@@ -26,7 +26,7 @@ export default function MyProfile() {
   };
 
   return (
-    <View style={styles.myProfile}>
+    <View style={styles.MyProfile}>
       <Text style={styles.title}>{user.email}</Text>
       <Image
         source={
@@ -47,7 +47,7 @@ export default function MyProfile() {
 }
 
 const styles = StyleSheet.create({
-  myProfile: {
+  MyProfile: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

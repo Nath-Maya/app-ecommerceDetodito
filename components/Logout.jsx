@@ -16,7 +16,7 @@ export default function Logout() {
 const handleLogout = () => {
     dispatch(logout())
     deleteSession()
-    navigate('Login')
+    navigate('Welcome')
     console.log('\x1b[31m%s\x1b[0m', 'Se cerro la sesión');
     
 }

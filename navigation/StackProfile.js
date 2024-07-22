@@ -7,7 +7,7 @@ import Logout from '../components/Logout';
 
 const Stack = createStackNavigator();
 
-export default function StackMyProfile() {
+export default function StackProfile() {
   return (
     <Stack.Navigator
       screenOptions={{
